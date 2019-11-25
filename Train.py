@@ -81,19 +81,18 @@ for epoch in range(params.nof_epoch):
     for i_batch, sample_batched in enumerate(iterator):
         iterator.set_description('Batch %i/%i' % (epoch+1, params.nof_epoch))
 
-        train_batch = Variable(sample_batched['Points'])
+        train_batch_para = Variable(sample_batched['Para'])
+        train_batch_quest = Variable(sample_batched['Question'])
         target_batch = Variable(sample_batched['Solution'])
 
         if USE_CUDA:
-            train_batch = train_batch.cuda()
-            target_batch = target_batch.cuda()
-
-        o, p = model(train_batch)
+            train_batch_para = train_batch_para.cuda()
+            train_batch_quest = train_batch_quest.cuda()
+        
+        o, p = model(train_batch_para,train_batch_quest)
         o = o.contiguous().view(-1, o.size()[-1])
 
         target_batch = target_batch.view(-1)
-        # import pdb
-        # pdb.set_trace()
 
         loss = CCE(o, target_batch)
 

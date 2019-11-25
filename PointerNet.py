@@ -147,20 +147,20 @@ class Decoder(nn.Module):
     Decoder model for Pointer-Net
     """
 
-    def __init__(self, embedding_dim,
+    def __init__(self, input_dim,
                  hidden_dim):
         """
         Initiate Decoder
 
-        :param int embedding_dim: Number of embeddings in Pointer-Net
+        :param int input_dim: input dimension in Pointer-Net
         :param int hidden_dim: Number of hidden units for the decoder's RNN
         """
 
         super(Decoder, self).__init__()
-        self.embedding_dim = embedding_dim
+        self.input_dim = input_dim
         self.hidden_dim = hidden_dim
 
-        self.input_to_hidden = nn.Linear(embedding_dim, 4 * hidden_dim)
+        self.input_to_hidden = nn.Linear(input_dim, 4 * hidden_dim)
         self.hidden_to_hidden = nn.Linear(hidden_dim, 4 * hidden_dim)
         self.hidden_out = nn.Linear(hidden_dim * 2, hidden_dim)
         self.att = Attention(hidden_dim, hidden_dim)
@@ -176,7 +176,7 @@ class Decoder(nn.Module):
         """
         Decoder - Forward-pass
 
-        :param Tensor embedded_inputs: Embedded inputs of Pointer-Net
+        :param Tensor embedded_inputs: Embedded inputs of questions
         :param Tensor decoder_input: First decoder's input
         :param Tensor hidden: First decoder's hidden states
         :param Tensor context: Encoder's outputs
@@ -244,8 +244,8 @@ class Decoder(nn.Module):
             mask  = mask * (1 - one_hot_pointers)
 
             # Get embedded inputs by max indices
-            embedding_mask = one_hot_pointers.unsqueeze(2).expand(-1, -1, self.embedding_dim).byte()
-            decoder_input = embedded_inputs[embedding_mask.data].view(batch_size, self.embedding_dim)
+            embedding_mask = one_hot_pointers.unsqueeze(2).expand(-1, -1, self.input_dim).byte()
+            decoder_input = embedded_inputs[embedding_mask.data].view(batch_size, self.input_dim)
 
             outputs.append(outs.unsqueeze(0))
             pointers.append(indices.unsqueeze(1))
@@ -280,44 +280,54 @@ class PointerNet(nn.Module):
         self.embedding_dim = embedding_dim
         self.bidir = bidir
         self.embedding = nn.Linear(2, embedding_dim)
-        self.encoder = Encoder(embedding_dim,
+        self.para_encoder = Encoder(embedding_dim,
                                hidden_dim,
                                lstm_layers,
                                dropout,
                                bidir)
-        self.decoder = Decoder(embedding_dim, hidden_dim)
-        self.decoder_input0 = Parameter(torch.FloatTensor(embedding_dim), requires_grad=False)
+        self.question_encoder = Encoder(embedding_dim, hidden_dim, lstm_layers, dropout, bidir)
+        self.decoder = Decoder(hidden_dim, hidden_dim)
 
-        # Initialize decoder_input0
-        nn.init.uniform_(self.decoder_input0, -1, 1)
-
-    def forward(self, inputs):
+    def forward(self, inputs, questions):
         """
         PointerNet - Forward-pass
 
-        :param Tensor inputs: Input sequence
+        :param Tensor inputs: Input sequence (paragraph)
+        :param Tensor questions: Questions sequence
         :return: Pointers probabilities and indices
         """
 
         batch_size = inputs.size(0)
         input_length = inputs.size(1)
+        quest_length = questions.size(1)
 
         decoder_input0 = self.decoder_input0.unsqueeze(0).expand(batch_size, -1)
 
         inputs = inputs.view(batch_size * input_length, -1)
         embedded_inputs = self.embedding(inputs).view(batch_size, input_length, -1)
 
-        encoder_hidden0 = self.encoder.init_hidden(embedded_inputs)
-        encoder_outputs, encoder_hidden = self.encoder(embedded_inputs,
+        encoder_hidden0 = self.para_encoder.init_hidden(embedded_inputs)
+        encoder_outputs, encoder_hidden = self.para_encoder(embedded_inputs,
                                                        encoder_hidden0)
+
+        quest_encoder_hidden0 = self.question_encoder.init_hidden(quest_embedded_inputs)
+        quest_encoder_outputs, quest_encoder_hidden = self.question_encoder(quest_embedded_inputs, quest_encoder_hidden0)
+
         if self.bidir:
             decoder_hidden0 = (torch.cat([_ for _ in encoder_hidden[0][-2:]], dim=-1),
                                torch.cat([_ for _ in encoder_hidden[1][-2:]], dim=-1))
+            # Not used currently
+            quest_decoder_hidden0 = (torch.cat([_ for _ in quest_encoder_hidden[0][-2:]], dim=-1),
+                               torch.cat([_ for _ in quest_encoder_hidden[1][-2:]], dim=-1))
         else:
             decoder_hidden0 = (encoder_hidden[0][-1],
                                encoder_hidden[1][-1])
+            # Not used currently
+            quest_decoder_hidden0 = (quest_encoder_hidden[0][-1],
+                                     quest_encoder_hidden[1][-1])
+        # Use the last output of question encoding as decoder initial input
         (outputs, pointers), decoder_hidden = self.decoder(embedded_inputs,
-                                                           decoder_input0,
+                                                           quest_encoder_outputs[:,-1:].squeeze(1),
                                                            decoder_hidden0,
                                                            encoder_outputs)
 
