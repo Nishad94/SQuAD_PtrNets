@@ -19,6 +19,8 @@ from tqdm import tqdm
 from PointerNet import PointerNet
 from Data_Generator import TSPDataset
 
+from data_pointer_nn import train_loader
+
 parser = argparse.ArgumentParser(description="Pytorch implementation of Pointer-Net")
 
 # Data
@@ -54,13 +56,14 @@ model = PointerNet(params.embedding_size,
                    params.dropout,
                    params.bidir)
 
-dataset = TSPDataset(params.train_size,
-                     params.nof_points)
+# dataset = TSPDataset(params.train_size,
+#                      params.nof_points)
 
-dataloader = DataLoader(dataset,
-                        batch_size=params.batch_size,
-                        shuffle=True,
-                        num_workers=4)
+# dataloader = DataLoader(dataset,
+#                         batch_size=params.batch_size,
+#                         shuffle=True,
+#                         num_workers=4)
+
 
 if USE_CUDA:
     model.cuda()
@@ -76,24 +79,26 @@ losses = []
 
 for epoch in range(params.nof_epoch):
     batch_loss = []
-    iterator = tqdm(dataloader, unit='Batch')
+    iterator = tqdm(train_loader, unit='Batch')
 
     for i_batch, sample_batched in enumerate(iterator):
         iterator.set_description('Batch %i/%i' % (epoch+1, params.nof_epoch))
 
-        train_batch_para = Variable(sample_batched['Para'])
-        train_batch_quest = Variable(sample_batched['Question'])
-        target_batch = Variable(sample_batched['Solution'])
+        train_batch_para = Variable(sample_batched[1]).unsqueeze(2)
+        train_batch_quest = Variable(sample_batched[0]).unsqueeze(2)
+        target_batch = Variable(sample_batched[2]).unsqueeze(2)
 
         if USE_CUDA:
-            train_batch_para = train_batch_para.cuda()
-            train_batch_quest = train_batch_quest.cuda()
-        
+            train_batch_para = train_batch_para.cuda().unsqueeze(2)
+            train_batch_quest = train_batch_quest.cuda().unsqueeze(2)
+        # import pdb
+        # pdb.set_trace()
         o, p = model(train_batch_para,train_batch_quest)
         o = o.contiguous().view(-1, o.size()[-1])
 
         target_batch = target_batch.view(-1)
-
+        import pdb
+        pdb.set_trace()
         loss = CCE(o, target_batch)
 
         losses.append(loss.item())
