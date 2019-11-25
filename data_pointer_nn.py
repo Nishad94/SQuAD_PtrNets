@@ -14,7 +14,7 @@ import string
 import matplotlib.pyplot as plt
 
 # data in csv
-dev_set_csv = '/Users/mayanksharma/Desktop/SQuAD-v1.1.csv'
+dev_set_csv = 'SQuAD-v1.1.csv'
 
 # read csv into pandas dataframe
 data_csv = pd.read_csv(dev_set_csv, encoding = "ISO-8859-1")
@@ -25,7 +25,7 @@ idx = 0
 # for i in range(0, 1):
 for i in range(0, len(data_csv)):
     # add context vocab to dict
-    print(i)
+    # print(i)
     context = data_csv['Context'][i]
     lst_words_context = re.findall(r"[\w']+|[.,!?;]", context)
     for word in lst_words_context:
@@ -81,7 +81,7 @@ class dataset(Dataset):
     def __getitem__(self, i): # return single data item
 
         answerWindow = [int(df_format['Answer'][i][0]), int(df_format['Answer'][i][1])]
-        return torch.LongTensor(vec_int(df_format['Question'][i])), torch.LongTensor(vec_int(df_format['Context'][i])), torch.LongTensor(answerWindow)
+        return torch.FloatTensor(vec_int(df_format['Question'][i])), torch.FloatTensor(vec_int(df_format['Context'][i])), torch.LongTensor(answerWindow)
     
 train_data = dataset(df_format)
 # test_data = dataset(df_format)
@@ -91,9 +91,9 @@ train_data = dataset(df_format)
 train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = True) 
 #test_loader = torch.utils.data.DataLoader(test_data, batch_size = bs, collate_fn = collate, shuffle = False) 
 
-for index, (df) in enumerate(train_loader):
-    question = df[0]
-    context = df[1]
-    answer = df[2]
-    break
+# for index, (df) in enumerate(train_loader):
+#     question = df[0]
+#     context = df[1]
+#     answer = df[2]
+#     break
 

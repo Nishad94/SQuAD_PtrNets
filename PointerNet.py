@@ -210,7 +210,7 @@ class Decoder(nn.Module):
 
             # Regular LSTM
             h, c = hidden
-
+            
             gates = self.input_to_hidden(x) + self.hidden_to_hidden(h)
             input, forget, cell, out = gates.chunk(4, 1)
 
@@ -245,6 +245,7 @@ class Decoder(nn.Module):
 
             # Get embedded inputs by max indices
             embedding_mask = one_hot_pointers.unsqueeze(2).expand(-1, -1, self.input_dim).byte()
+            
             decoder_input = embedded_inputs[embedding_mask.data].view(batch_size, self.input_dim)
 
             outputs.append(outs.unsqueeze(0))
@@ -279,14 +280,15 @@ class PointerNet(nn.Module):
         super(PointerNet, self).__init__()
         self.embedding_dim = embedding_dim
         self.bidir = bidir
-        self.embedding = nn.Linear(2, embedding_dim)
+        self.embedding = nn.Linear(1, embedding_dim)
         self.para_encoder = Encoder(embedding_dim,
                                hidden_dim,
                                lstm_layers,
                                dropout,
                                bidir)
         self.question_encoder = Encoder(embedding_dim, hidden_dim, lstm_layers, dropout, bidir)
-        self.decoder = Decoder(hidden_dim, hidden_dim)
+        self.quest_linear = nn.Linear(hidden_dim, embedding_dim)
+        self.decoder = Decoder(embedding_dim, hidden_dim)
 
     def forward(self, inputs, questions):
         """
@@ -301,10 +303,13 @@ class PointerNet(nn.Module):
         input_length = inputs.size(1)
         quest_length = questions.size(1)
 
-        decoder_input0 = self.decoder_input0.unsqueeze(0).expand(batch_size, -1)
+        # decoder_input0 = self.decoder_input0.unsqueeze(0).expand(batch_size, -1)
 
         inputs = inputs.view(batch_size * input_length, -1)
+        quest_inputs = questions.view(batch_size * quest_length, -1)
+
         embedded_inputs = self.embedding(inputs).view(batch_size, input_length, -1)
+        quest_embedded_inputs = self.embedding(quest_inputs).view(batch_size, quest_length, -1)
 
         encoder_hidden0 = self.para_encoder.init_hidden(embedded_inputs)
         encoder_outputs, encoder_hidden = self.para_encoder(embedded_inputs,
@@ -325,9 +330,11 @@ class PointerNet(nn.Module):
             # Not used currently
             quest_decoder_hidden0 = (quest_encoder_hidden[0][-1],
                                      quest_encoder_hidden[1][-1])
+        quest_encoding = quest_encoder_outputs[:,-1:].squeeze(1)
+        quest_encoding = self.quest_linear(quest_encoding)
         # Use the last output of question encoding as decoder initial input
         (outputs, pointers), decoder_hidden = self.decoder(embedded_inputs,
-                                                           quest_encoder_outputs[:,-1:].squeeze(1),
+                                                           quest_encoding,
                                                            decoder_hidden0,
                                                            encoder_outputs)
 
