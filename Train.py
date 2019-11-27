@@ -9,6 +9,7 @@ http://arxiv.org/pdf/1506.03134v1.pdf.
 import torch
 import torch.optim as optim
 import torch.backends.cudnn as cudnn
+import time
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
 
@@ -19,7 +20,7 @@ from tqdm import tqdm
 from PointerNet import PointerNet
 from Data_Generator import TSPDataset
 
-from data_pointer_nn import train_loader
+from data_loader import train_loader
 
 parser = argparse.ArgumentParser(description="Pytorch implementation of Pointer-Net")
 
@@ -77,6 +78,21 @@ model_optim = optim.Adam(filter(lambda p: p.requires_grad,
 
 losses = []
 
+def test_loop(model,loader):
+    for i_batch, sample_batched in enumerate(iterator):
+        iterator.set_description('Test Batch %i/%i' % (epoch+1, params.nof_epoch))
+
+        test_batch_para = Variable(sample_batched[1]).unsqueeze(2)
+        test_batch_quest = Variable(sample_batched[0]).unsqueeze(2)
+
+        if USE_CUDA:
+            test_batch_para = test_batch_para.cuda().unsqueeze(2)
+            test_batch_quest = test_batch_quest.cuda().unsqueeze(2)
+        
+        o, p = model(test_batch_para,test_batch_quest)
+        print(p)
+        # Write code for calculating F1 score with targets here using p
+
 for epoch in range(params.nof_epoch):
     batch_loss = []
     iterator = tqdm(train_loader, unit='Batch')
@@ -91,14 +107,13 @@ for epoch in range(params.nof_epoch):
         if USE_CUDA:
             train_batch_para = train_batch_para.cuda().unsqueeze(2)
             train_batch_quest = train_batch_quest.cuda().unsqueeze(2)
-        # import pdb
-        # pdb.set_trace()
+        
         o, p = model(train_batch_para,train_batch_quest)
         o = o.contiguous().view(-1, o.size()[-1])
 
         target_batch = target_batch.view(-1)
-        import pdb
-        pdb.set_trace()
+        # import pdb
+        # pdb.set_trace()
         loss = CCE(o, target_batch)
 
         losses.append(loss.item())
@@ -111,3 +126,6 @@ for epoch in range(params.nof_epoch):
         iterator.set_postfix(loss='{}'.format(loss.item()))
 
     iterator.set_postfix(loss=np.average(batch_loss))
+    torch.save(model.state_dict(), f"{time.time()}_{epoch}.pt")
+    test_loop(model,train_loader)
+    

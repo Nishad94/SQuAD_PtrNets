@@ -13,7 +13,7 @@ import string
 import matplotlib.pyplot as plt
 
 # dev_set_json = '/Users/mayanksharma/Desktop/SQuAD-v1.1.json'
-dev_set_csv = '/Users/mayanksharma/Desktop/SQuAD-v1.1.csv'
+dev_set_csv = 'SQuAD-v1.1.csv'
 
 data_csv = pd.read_csv(dev_set_csv, encoding = "ISO-8859-1")
 
@@ -75,8 +75,8 @@ def get_starting_index(lst1, lst2):
 count_missing = 0
 df_format = pd.DataFrame(columns = ['Question', 'Context', 'Answer', 'is_invalid'])
 df_format_final = pd.DataFrame(columns = ['Question', 'Context', 'Answer'])
-# for i in range(0, 9000):
-for i in range(0, len(data_csv)):
+for i in range(0, 5):
+# for i in range(0, len(data_csv)):
     context = data_csv['Context'][i]
 #     context = context.replace('\'', '')
     context = context.replace("\'s", '')
@@ -121,15 +121,17 @@ class dataset(Dataset):
 
         answerWindow = [int(df_format['Answer'][i][0]), int(df_format['Answer'][i][1])]
 #   print (answerWindow)
-        return torch.LongTensor(vec_int(df_format['Question'][i])), torch.LongTensor(vec_int(df_format['Context'][i])), torch.LongTensor(answerWindow)
+        questionList, _, _ = vec_int(df_format['Question'][i], count_missing)
+        contextList,_,_ = vec_int(df_format['Context'][i], count_missing)
+        return torch.Tensor(questionList), torch.Tensor(contextList), torch.LongTensor(answerWindow)
     
 
 train_data = dataset(df_format_final)
-# test_data = dataset(df_format)
+test_data = dataset(df_format_final)
 
 
 # create train and test dataloader objects
-train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = True) 
+train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = False) 
 #test_loader = torch.utils.data.DataLoader(test_data, batch_size = bs, collate_fn = collate, shuffle = False) 
 
 # for index, (df) in enumerate(train_loader):
