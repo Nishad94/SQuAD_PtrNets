@@ -21,6 +21,7 @@ from PointerNet import PointerNet
 from Data_Generator import TSPDataset
 
 from data_loader import train_loader
+from eval import compute_f1
 
 parser = argparse.ArgumentParser(description="Pytorch implementation of Pointer-Net")
 
@@ -81,17 +82,20 @@ losses = []
 def test_loop(model,loader):
     for i_batch, sample_batched in enumerate(iterator):
         iterator.set_description('Test Batch %i/%i' % (epoch+1, params.nof_epoch))
-
-        test_batch_para = Variable(sample_batched[1]).unsqueeze(2)
-        test_batch_quest = Variable(sample_batched[0]).unsqueeze(2)
-
+        test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
+        test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
+        target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
         if USE_CUDA:
-            test_batch_para = test_batch_para.cuda().unsqueeze(2)
-            test_batch_quest = test_batch_quest.cuda().unsqueeze(2)
-        
+            test_batch_para = test_batch_para.cuda()
+            test_batch_quest = test_batch_quest.cuda()
         o, p = model(test_batch_para,test_batch_quest)
-        print(p)
-        # Write code for calculating F1 score with targets here using p
+        # Convert to list
+        p_ = p.tolist()[0]
+        p_.sort()
+        para = test_batch_para.tolist()
+        # Flatten 
+        para = [l for item in para[0] for l in item]
+        print(compute_f1(para[p_[0]:p_[1]+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1]))
 
 for epoch in range(params.nof_epoch):
     batch_loss = []
@@ -100,20 +104,19 @@ for epoch in range(params.nof_epoch):
     for i_batch, sample_batched in enumerate(iterator):
         iterator.set_description('Batch %i/%i' % (epoch+1, params.nof_epoch))
 
-        train_batch_para = Variable(sample_batched[1]).unsqueeze(2)
-        train_batch_quest = Variable(sample_batched[0]).unsqueeze(2)
-        target_batch = Variable(sample_batched[2]).unsqueeze(2)
+        train_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
+        train_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
+        target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
 
         if USE_CUDA:
-            train_batch_para = train_batch_para.cuda().unsqueeze(2)
-            train_batch_quest = train_batch_quest.cuda().unsqueeze(2)
+            train_batch_para = train_batch_para.cuda()
+            train_batch_quest = train_batch_quest.cuda()
+            target_batch = target_batch.cuda()
         
         o, p = model(train_batch_para,train_batch_quest)
         o = o.contiguous().view(-1, o.size()[-1])
 
         target_batch = target_batch.view(-1)
-        # import pdb
-        # pdb.set_trace()
         loss = CCE(o, target_batch)
 
         losses.append(loss.item())

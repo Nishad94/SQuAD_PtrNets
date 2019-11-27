@@ -11,6 +11,7 @@ from torch.utils.data.dataset import Dataset
 from nltk.metrics.distance import edit_distance
 import string
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 # dev_set_json = '/Users/mayanksharma/Desktop/SQuAD-v1.1.json'
 dev_set_csv = 'SQuAD-v1.1.csv'
@@ -70,13 +71,15 @@ def get_starting_index(lst1, lst2):
     for i in range(0, len(lst1)):
         if (lst1[i:i+len(lst2)] == lst2):
             return (i, i+len(lst2))
-        
+
 # create dataframe for getitem
 count_missing = 0
 df_format = pd.DataFrame(columns = ['Question', 'Context', 'Answer', 'is_invalid'])
 df_format_final = pd.DataFrame(columns = ['Question', 'Context', 'Answer'])
-for i in range(0, 50):
-# for i in range(0, len(data_csv)):
+# for i in range(0, 50):
+print(len(data_csv))
+# for i in tqdm(range(len(data_csv))):
+for i in tqdm(range(100)):
     context = data_csv['Context'][i]
 #     context = context.replace('\'', '')
     context = context.replace("\'s", '')
@@ -84,10 +87,11 @@ for i in range(0, 50):
     context_vec, count_missing, is_invalid = vec_int(context, count_missing)
     if (is_invalid == 1):
         continue
-    for j in range(0, len(data_csv['QuestionAnswerSets'][i].split("|\"Question\"")[1:])):
-        question = data_csv['QuestionAnswerSets'][i].split("|\"Question\"")[1:][j].split("->")[1][2:-14]
+    qa_list = data_csv['QuestionAnswerSets'][i].split("|\"Question\"")[1:]
+    for j in range(0, len(qa_list)):
+        question = qa_list[j].split("->")[1][2:-14]
         question = question.replace('\'', '')
-        answer = data_csv['QuestionAnswerSets'][i].split("|\"Question\"")[1:][j].split("->")[2][3:-22]
+        answer = qa_list[j].split("->")[2][3:-22]
         answer = answer.replace("\'s", '')
         answer = answer.replace("\'", '')
 #         answer = answer.replace('\'', '')
@@ -132,7 +136,6 @@ class dataset(Dataset):
         dict_ret['Context_Txt'] = self.df['Context'][i]
         dict_ret['Context_Tensor'] = torch.Tensor(contextList)
         dict_ret['Answer'] = torch.LongTensor(answerWindow)
-        
         return dict_ret
         # return torch.Tensor(questionList), torch.Tensor(contextList), torch.LongTensor(answerWindow)
     

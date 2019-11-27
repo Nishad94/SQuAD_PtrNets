@@ -1,4 +1,5 @@
 import string
+import collections
 
 def normalize_answer(s):
   """Lower text and remove punctuation, articles and extra whitespace."""
@@ -19,8 +20,8 @@ def get_tokens(s):
   return normalize_answer(s).split()
 
 def compute_f1(a_gold, a_pred):
-  gold_toks = get_tokens(a_gold)
-  pred_toks = get_tokens(a_pred)
+  gold_toks = a_gold #get_tokens(a_gold)
+  pred_toks = a_pred #get_tokens(a_pred)
   common = collections.Counter(gold_toks) & collections.Counter(pred_toks)
   num_same = sum(common.values())
   if len(gold_toks) == 0 or len(pred_toks) == 0:
