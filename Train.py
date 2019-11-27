@@ -125,6 +125,7 @@ for epoch in range(params.nof_epoch):
 
         iterator.set_postfix(loss='{}'.format(loss.item()))
 
+
     iterator.set_postfix(loss=np.average(batch_loss))
     torch.save(model.state_dict(), f"{time.time()}_{epoch}.pt")
     test_loop(model,train_loader)

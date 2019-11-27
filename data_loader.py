@@ -75,7 +75,7 @@ def get_starting_index(lst1, lst2):
 count_missing = 0
 df_format = pd.DataFrame(columns = ['Question', 'Context', 'Answer', 'is_invalid'])
 df_format_final = pd.DataFrame(columns = ['Question', 'Context', 'Answer'])
-for i in range(0, 5):
+for i in range(0, 50):
 # for i in range(0, len(data_csv)):
     context = data_csv['Context'][i]
 #     context = context.replace('\'', '')
@@ -105,7 +105,7 @@ for i in range(0, 5):
         
 #         df_format['Answer'].append((s_idx, e_idx))
         df_format = df_format.append({'Question' : question, 'Context' : context, 'Answer': ans_idx, 'is_invalid': is_invalid} , ignore_index = True)
-        if (is_invalid == 0):
+        if (is_invalid == 0 and ans_idx is not None):
             df_format_final = df_format_final.append({'Question' : question, 'Context' : context, 'Answer': ans_idx} , ignore_index = True)
             
 
@@ -118,11 +118,14 @@ class dataset(Dataset):
         return len(self.df)
 
     def __getitem__(self, i): # return single data item
+        # if i == 27:
+        #     import pdb
+        #     pdb.set_trace()
 
-        answerWindow = [int(df_format['Answer'][i][0]), int(df_format['Answer'][i][1])]
+        answerWindow = [int(self.df['Answer'][i][0]), int(self.df['Answer'][i][1])]
 #   print (answerWindow)
-        questionList, _, _ = vec_int(df_format['Question'][i], count_missing)
-        contextList,_,_ = vec_int(df_format['Context'][i], count_missing)
+        questionList, _, _ = vec_int(self.df['Question'][i], count_missing)
+        contextList,_,_ = vec_int(self.df['Context'][i], count_missing)
         return torch.Tensor(questionList), torch.Tensor(contextList), torch.LongTensor(answerWindow)
     
 
