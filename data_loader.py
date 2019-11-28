@@ -79,7 +79,7 @@ df_format_final = pd.DataFrame(columns = ['Question', 'Context', 'Answer'])
 # for i in range(0, 50):
 print(len(data_csv))
 # for i in tqdm(range(len(data_csv))):
-for i in tqdm(range(100)):
+for i in tqdm(range(4)):
     context = data_csv['Context'][i]
 #     context = context.replace('\'', '')
     context = context.replace("\'s", '')
@@ -145,7 +145,7 @@ test_data = dataset(df_format_final)
 
 
 # create train and test dataloader objects
-train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = False) 
+train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = True) 
 #test_loader = torch.utils.data.DataLoader(test_data, batch_size = bs, collate_fn = collate, shuffle = False) 
 
 # for index, (df) in enumerate(train_loader):

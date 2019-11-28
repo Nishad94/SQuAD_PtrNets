@@ -333,7 +333,7 @@ class PointerNet(nn.Module):
         quest_encoding = quest_encoder_outputs[:,-1:].squeeze(1)
         quest_encoding = self.quest_linear(quest_encoding)
         # Use the last output of question encoding as decoder initial input
-        (outputs, pointers), decoder_hidden = self.decoder(embedded_inputs,
+        (outputs, pointers), decoder_hidden = self.decoder.forward(embedded_inputs,
                                                            quest_encoding,
                                                            decoder_hidden0,
                                                            encoder_outputs)

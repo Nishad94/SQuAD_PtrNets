@@ -80,6 +80,7 @@ model_optim = optim.Adam(filter(lambda p: p.requires_grad,
 losses = []
 
 def test_loop(model,loader):
+    total_f1 = 0.0
     for i_batch, sample_batched in enumerate(iterator):
         iterator.set_description('Test Batch %i/%i' % (epoch+1, params.nof_epoch))
         test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
@@ -95,7 +96,10 @@ def test_loop(model,loader):
         para = test_batch_para.tolist()
         # Flatten 
         para = [l for item in para[0] for l in item]
-        print(compute_f1(para[p_[0]:p_[1]+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1]))
+        total_f1 += compute_f1(para[p_[0]:p_[1]+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1])
+        if i_batch % 100 == 0:
+            print(total_f1/i_batch+1)
+    print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
 
 for epoch in range(params.nof_epoch):
     batch_loss = []
