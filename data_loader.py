@@ -45,7 +45,7 @@ class dataset(Dataset):
         dict_ret = {}
         
 
-        answerWindow = [int(self.df['Answer'][i][0][0]), int(self.df['Answer'][i][0][1])]
+        answerWindow = [int(self.df['Answer'][i][0][0]), int(self.df['Answer'][i][0][1] - 1)]
         lst_quest, _, _ = vec_int(self.df['Question'][i], count_missing)
         lst_context, _, _ = vec_int(self.df['Context'][i], count_missing)
         
