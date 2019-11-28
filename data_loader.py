@@ -70,7 +70,7 @@ def vec_int(str_ip, count_missing):
 def get_starting_index(lst1, lst2):
     for i in range(0, len(lst1)):
         if (lst1[i:i+len(lst2)] == lst2):
-            return (i, i+len(lst2))
+            return (i, i+len(lst2)-1)
 
 # create dataframe for getitem
 count_missing = 0
