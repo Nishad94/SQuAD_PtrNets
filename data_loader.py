@@ -50,9 +50,9 @@ class dataset(Dataset):
         lst_context, _, _ = vec_int(self.df['Context'][i], count_missing)
         
         dict_ret['Question_Txt'] = self.df['Question'][i]
-        dict_ret['Question_Tensor'] = torch.LongTensor(lst_quest)
+        dict_ret['Question_Tensor'] = torch.Tensor(lst_quest)
         dict_ret['Context_Txt'] = self.df['Context'][i]
-        dict_ret['Context_Tensor'] = torch.LongTensor(lst_context)
+        dict_ret['Context_Tensor'] = torch.Tensor(lst_context)
         dict_ret['Answer'] = torch.LongTensor(answerWindow)
         
         return dict_ret

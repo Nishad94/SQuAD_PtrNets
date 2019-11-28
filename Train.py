@@ -98,7 +98,7 @@ def test_loop(model,loader):
         para = [l for item in para[0] for l in item]
         total_f1 += compute_f1(para[p_[0]:p_[1]+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1])
         if i_batch % 100 == 0:
-            print(total_f1/i_batch+1)
+            print(total_f1/(i_batch+1))
     print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
 
 for epoch in range(params.nof_epoch):
