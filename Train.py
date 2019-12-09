@@ -24,6 +24,9 @@ from Data_Generator import TSPDataset
 from data_loader import train_loader, word2idx
 from eval import compute_f1
 
+
+
+
 parser = argparse.ArgumentParser(description="Pytorch implementation of Pointer-Net")
 
 # Data
@@ -53,12 +56,18 @@ if params.gpu and torch.cuda.is_available():
 else:
     USE_CUDA = False
 
+# from sentence_transformers import SentenceTransformer
+# modelBERT = SentenceTransformer('bert-base-nli-mean-tokens')
+
+
+
+
 # model = PointerNet(params.embedding_size,
 #                    params.hiddens,
 #                    params.nof_lstms,
 #                    params.dropout,
 #                    params.bidir)
-model = BasicS2S(len(word2idx),128,256)
+model = BasicS2S(len(word2idx),768,256)
 
 # dataset = TSPDataset(params.train_size,
 #                      params.nof_points)
@@ -110,6 +119,7 @@ def test_loop_s2s(model,loader):
         test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
         test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
         target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
+
         if USE_CUDA:
             test_batch_para = test_batch_para.cuda()
             test_batch_quest = test_batch_quest.cuda()
@@ -136,9 +146,14 @@ for epoch in range(params.nof_epoch):
     for i_batch, sample_batched in enumerate(iterator):
         iterator.set_description('Batch %i/%i' % (epoch+1, params.nof_epoch))
 
-        train_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
-        train_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
+        train_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2).long()
+        train_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2).long()
         target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
+        train_batch_quest_text = sample_batched["Question_Txt"]
+        train_batch_para_text = sample_batched["Context_Txt"]
+        # questionEmbedding = modelBERT.encode(train_batch_quest_text)
+        # paraEmbedding = modelBERT.encode(train_batch_para_text)
+        
 
         if USE_CUDA:
             train_batch_para = train_batch_para.cuda()
@@ -147,9 +162,12 @@ for epoch in range(params.nof_epoch):
         
         # o, p = model(train_batch_para,train_batch_quest)
         # o = o.contiguous().view(-1, o.size()[-1])
-        o = model(train_batch_para,train_batch_quest)
+        o = model(train_batch_para,train_batch_quest, train_batch_para_text, train_batch_quest_text)
         target_batch = target_batch.view(-1)
 
+        # print ('Here')
+        # import pdb
+        # pdb.set_trace()
         # Changes for baseline s2s
         targets = torch.zeros(o.size(0))
         targets[target_batch[0]] = 1

@@ -4,6 +4,49 @@ import torch
 import torch.nn as nn
 
 
+from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM
+modelBERT = BertModel.from_pretrained('bert-base-uncased')
+modelBERT.eval()
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+
+
+def getContextBertEmbeddings(sentence):
+    sentences = "[CLS]" + sentence + "[SEP]"
+    tokenized_text = tokenizer.tokenize(sentence)
+    indexed_token = tokenizer.convert_tokens_to_ids(tokenized_text)
+    batch_i = 0
+    #print (indexed_token)
+    # Convert inputs to PyTorch tensors
+    segments_ids = [1] * len(tokenized_text)
+    tokens_tensor = torch.tensor([indexed_token])
+    segments_tensors = torch.tensor([segments_ids])
+    #print (segments_tensors, tokens_tensor, len(tokenized_text))
+    with torch.no_grad():
+        encoded_layers, _ = modelBERT(tokens_tensor, segments_tensors)
+    token_embeddings = [] 
+
+# For each token in the sentence...
+    for token_i in range(len(tokenized_text)):
+      # Holds 12 layers of hidden states for each token 
+      hidden_layers = [] 
+      # For each of the 12 layers...
+      for layer_i in range(len(encoded_layers)):
+        # Lookup the vector for `token_i` in `layer_i`
+        vec = encoded_layers[layer_i][batch_i][token_i]
+        hidden_layers.append(vec)
+      token_embeddings.append(hidden_layers)
+
+    # Sanity check the dimensions:
+    # print ("Number of tokens in sequence:", len(token_embeddings))
+    # print ("Number of layers per token:", len(token_embeddings[0]))
+
+    concatenated_last_4_layers = [torch.cat((layer[-1], layer[-2], layer[-3], layer[-4]), 0) for layer in token_embeddings] # [number_of_tokens, 3072]
+    summed_last_4_layers = [torch.sum(torch.stack(layer)[-4:], 0) for layer in token_embeddings] # [number_of_tokens, 768]
+    #print (torch.stack(summed_last_4_layers).shape)
+    return torch.stack(summed_last_4_layers)
+
+
+
 class BasicS2S(nn.Module):
     """
     Pointer-Net
@@ -27,7 +70,7 @@ class BasicS2S(nn.Module):
         # 0 - neither, 1 - start token, 2 - end token
         self.lin_op = nn.Linear(hidden_dim,3)
 
-    def forward(self, inputs, questions):
+    def forward(self, inputs, questions, inputs_text, questions_text):
         """
         PointerNet - Forward-pass
 
@@ -45,9 +88,18 @@ class BasicS2S(nn.Module):
         # ques_len * 1
         quest_inputs = questions.view(batch_size * quest_length, -1)
         # inp_len * 1 * emb_dim
+
+
         embedded_para = self.embedding(inputs)
         # ques_len * 1 * emb_dim
         embedded_ques = self.embedding(quest_inputs)
+
+
+        embedded_para = getContextBertEmbeddings(inputs_text[0]).unsqueeze(1)
+        embedded_ques = getContextBertEmbeddings(questions_text[0]).unsqueeze(1)
+        
+        # import pdb
+        # pdb.set_trace()
         
         # ques_len * 1 * hidden, _
         question_lstm_out,_ = self.question_encoder.forward(embedded_ques)
