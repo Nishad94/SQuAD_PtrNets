@@ -18,6 +18,9 @@ else:
 def getContextBertEmbeddings(sentence):
     sentences = "[CLS]" + sentence + "[SEP]"
     tokenized_text = tokenizer.tokenize(sentence)
+    if len(tokenized_text) > 511:
+        tokenized_text = tokenized_text[:511]
+    
     indexed_token = tokenizer.convert_tokens_to_ids(tokenized_text)
     batch_i = 0
     #print (indexed_token)
@@ -107,8 +110,7 @@ class BasicS2S(nn.Module):
             embedded_para = embedded_para.cuda()
             embedded_ques = embedded_ques.cuda()
         
-        # import pdb
-        # pdb.set_trace()
+        
         
         # ques_len * 1 * hidden, _
         question_lstm_out,_ = self.question_encoder.forward(embedded_ques)
