@@ -58,7 +58,7 @@ class dataset(Dataset):
         return dict_ret
     
 df_format_full = pd.read_pickle("processed_data.pkl")
-df_format_final = df_format_full.iloc[0:30000, :]
+df_format_final = df_format_full.iloc[0:20000, :]
 
     
 train_data = dataset(df_format_final)
@@ -66,7 +66,7 @@ train_data = dataset(df_format_final)
 
 
 # create train and test dataloader objects
-train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = False) 
+train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = True) 
 #test_loader = torch.utils.data.DataLoader(test_data, batch_size = bs, collate_fn = collate, shuffle = False) 
 
 # uncomment below for testing
