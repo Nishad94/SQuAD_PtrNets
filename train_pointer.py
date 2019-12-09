@@ -116,7 +116,7 @@ for epoch in range(params.nof_epoch):
             train_batch_para = train_batch_para.cuda()
             train_batch_quest = train_batch_quest.cuda()
             target_batch = target_batch.cuda()
-        
+        #print (type(train_batch_para),type(train_batch_quest))
         o, p = model(train_batch_para,train_batch_quest)
         o = o.contiguous().view(-1, o.size()[-1])
 

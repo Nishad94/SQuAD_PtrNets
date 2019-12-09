@@ -20,7 +20,7 @@ def vec_int(str_ip, count_missing):
     lst_str_ip = re.findall(r"[\w']+|[.,!?;]", str_ip)
     for word in lst_str_ip:
         if (word not in word2idx):
-            print(word)
+#            print(word)
             idx = 0
             count_missing += 1
             is_invalid = 1
@@ -50,11 +50,11 @@ class dataset(Dataset):
         lst_context, _, _ = vec_int(self.df['Context'][i], count_missing)
         
         dict_ret['Question_Txt'] = self.df['Question'][i]
-        dict_ret['Question_Tensor'] = torch.tensor(lst_quest)
+        dict_ret['Question_Tensor'] = torch.FloatTensor(lst_quest)
         dict_ret['Context_Txt'] = self.df['Context'][i]
-        dict_ret['Context_Tensor'] = torch.tensor(lst_context)
+        dict_ret['Context_Tensor'] = torch.FloatTensor(lst_context)
         dict_ret['Answer'] = torch.LongTensor(answerWindow)
-        
+#        print (type(dict_ret))
         return dict_ret
     
 df_format_full = pd.read_pickle("processed_data.pkl")
