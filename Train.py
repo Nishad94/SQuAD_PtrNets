@@ -119,12 +119,15 @@ def test_loop_s2s(model,loader):
         test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
         test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
         target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
+        test_batch_quest_text = sample_batched["Question_Txt"]
+        test_batch_para_text = sample_batched["Context_Txt"]
+
 
         if USE_CUDA:
             test_batch_para = test_batch_para.cuda()
             test_batch_quest = test_batch_quest.cuda()
         # para_len * 3
-        o = model(test_batch_para,test_batch_quest)
+        o = model(test_batch_para,test_batch_quest, test_batch_para_text, test_batch_quest_text)
         start_probs = o[:,1]
         end_probs = o[:,2]
         start_pos = torch.argmax(start_probs)
@@ -176,6 +179,9 @@ for epoch in range(params.nof_epoch):
             targets = targets.cuda()
         loss = CCE(o, targets.long())
         # end of changes
+
+        if (i_batch == 10):
+            break
 
         #loss = CCE(o, target_batch)
 

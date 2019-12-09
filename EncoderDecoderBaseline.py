@@ -9,6 +9,11 @@ modelBERT = BertModel.from_pretrained('bert-base-uncased')
 modelBERT.eval()
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
+if torch.cuda.is_available():
+    USE_CUDA = True
+else:
+    USE_CUDA = False
+
 
 def getContextBertEmbeddings(sentence):
     sentences = "[CLS]" + sentence + "[SEP]"
@@ -90,13 +95,17 @@ class BasicS2S(nn.Module):
         # inp_len * 1 * emb_dim
 
 
-        embedded_para = self.embedding(inputs)
-        # ques_len * 1 * emb_dim
-        embedded_ques = self.embedding(quest_inputs)
+        # embedded_para = self.embedding(inputs)
+        # # ques_len * 1 * emb_dim
+        # embedded_ques = self.embedding(quest_inputs)
 
 
         embedded_para = getContextBertEmbeddings(inputs_text[0]).unsqueeze(1)
         embedded_ques = getContextBertEmbeddings(questions_text[0]).unsqueeze(1)
+
+        if USE_CUDA:
+            embedded_para = embedded_para.cuda()
+            embedded_ques = embedded_ques.cuda()
         
         # import pdb
         # pdb.set_trace()
