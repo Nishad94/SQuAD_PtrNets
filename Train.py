@@ -18,9 +18,10 @@ import argparse
 from tqdm import tqdm
 
 from PointerNet import PointerNet
+from EncoderDecoderBaseline import BasicS2S
 from Data_Generator import TSPDataset
 
-from data_loader import train_loader
+from data_loader import train_loader, word2idx
 from eval import compute_f1
 
 parser = argparse.ArgumentParser(description="Pytorch implementation of Pointer-Net")
@@ -52,11 +53,12 @@ if params.gpu and torch.cuda.is_available():
 else:
     USE_CUDA = False
 
-model = PointerNet(params.embedding_size,
-                   params.hiddens,
-                   params.nof_lstms,
-                   params.dropout,
-                   params.bidir)
+# model = PointerNet(params.embedding_size,
+#                    params.hiddens,
+#                    params.nof_lstms,
+#                    params.dropout,
+#                    params.bidir)
+model = BasicS2S(len(word2idx),128,256)
 
 # dataset = TSPDataset(params.train_size,
 #                      params.nof_points)
@@ -101,6 +103,32 @@ def test_loop(model,loader):
             print(total_f1/(i_batch+1))
     print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
 
+def test_loop_s2s(model,loader):
+    total_f1 = 0.0
+    for i_batch, sample_batched in enumerate(iterator):
+        iterator.set_description('Test Batch %i/%i' % (epoch+1, params.nof_epoch))
+        test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
+        test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
+        target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
+        if USE_CUDA:
+            test_batch_para = test_batch_para.cuda()
+            test_batch_quest = test_batch_quest.cuda()
+        # para_len * 3
+        o = model(test_batch_para,test_batch_quest)
+        start_probs = o[:,1]
+        end_probs = o[:,2]
+        start_pos = torch.argmax(start_probs)
+        end_pos = torch.argmax(end_probs)
+        
+        para = test_batch_para.tolist()
+        # Flatten 
+        para = [l for item in para[0] for l in item]
+        total_f1 += compute_f1(para[start_pos:end_pos+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1])
+        if i_batch % 100 == 0:
+            print(total_f1/(i_batch+1))
+    print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
+
+
 for epoch in range(params.nof_epoch):
     batch_loss = []
     iterator = tqdm(train_loader, unit='Batch')
@@ -117,11 +145,19 @@ for epoch in range(params.nof_epoch):
             train_batch_quest = train_batch_quest.cuda()
             target_batch = target_batch.cuda()
         
-        o, p = model(train_batch_para,train_batch_quest)
-        o = o.contiguous().view(-1, o.size()[-1])
-
+        # o, p = model(train_batch_para,train_batch_quest)
+        # o = o.contiguous().view(-1, o.size()[-1])
+        o = model(train_batch_para,train_batch_quest)
         target_batch = target_batch.view(-1)
-        loss = CCE(o, target_batch)
+
+        # Changes for baseline s2s
+        targets = torch.zeros(o.size(0))
+        targets[target_batch[0]] = 1
+        targets[target_batch[1]] = 2
+        loss = CCE(o, targets.long())
+        # end of changes
+
+        #loss = CCE(o, target_batch)
 
         losses.append(loss.item())
         batch_loss.append(loss.item())
@@ -135,5 +171,5 @@ for epoch in range(params.nof_epoch):
 
     iterator.set_postfix(loss=np.average(batch_loss))
     torch.save(model.state_dict(), f"{time.time()}_{epoch}.pt")
-    test_loop(model,train_loader)
+    test_loop_s2s(model,train_loader)
     

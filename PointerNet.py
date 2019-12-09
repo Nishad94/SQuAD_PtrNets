@@ -302,12 +302,12 @@ class PointerNet(nn.Module):
         batch_size = inputs.size(0)
         input_length = inputs.size(1)
         quest_length = questions.size(1)
-
+        
         # decoder_input0 = self.decoder_input0.unsqueeze(0).expand(batch_size, -1)
 
         inputs = inputs.view(batch_size * input_length, -1)
         quest_inputs = questions.view(batch_size * quest_length, -1)
-
+        
         embedded_inputs = self.embedding(inputs).view(batch_size, input_length, -1)
         quest_embedded_inputs = self.embedding(quest_inputs).view(batch_size, quest_length, -1)
 
