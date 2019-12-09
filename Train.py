@@ -154,6 +154,8 @@ for epoch in range(params.nof_epoch):
         targets = torch.zeros(o.size(0))
         targets[target_batch[0]] = 1
         targets[target_batch[1]] = 2
+        if USE_CUDA:
+            targets = targets.cuda()
         loss = CCE(o, targets.long())
         # end of changes
 
