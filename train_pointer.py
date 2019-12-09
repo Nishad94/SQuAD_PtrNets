@@ -80,9 +80,10 @@ model_optim = optim.Adam(filter(lambda p: p.requires_grad,
 losses = []
 
 def test_loop(model,loader):
+    model.eval()
     total_f1 = 0.0
-    for i_batch, sample_batched in enumerate(iterator):
-        iterator.set_description('Test Batch %i/%i' % (epoch+1, params.nof_epoch))
+    for i_batch, sample_batched in enumerate(loader):
+        #iterator.set_description('Test Batch %i/%i' % (epoch+1, params.nof_epoch))
         test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
         test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
         target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
@@ -98,13 +99,13 @@ def test_loop(model,loader):
         para = [l for item in para[0] for l in item]
         total_f1 += compute_f1(para[p_[0]:p_[1]+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1])
         if i_batch % 100 == 0:
-            print(total_f1/(i_batch+1))
-    print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
+            print('Batch', i_batch, total_f1/(i_batch+1))
+    print(f"Final Average F1 score (across {len(loader)} examples): {total_f1/len(loader)}")
 
 for epoch in range(params.nof_epoch):
     batch_loss = []
     iterator = tqdm(train_loader, unit='Batch')
-
+    model.train()
     for i_batch, sample_batched in enumerate(iterator):
         iterator.set_description('Batch %i/%i' % (epoch+1, params.nof_epoch))
 
@@ -131,8 +132,8 @@ for epoch in range(params.nof_epoch):
         model_optim.step()
 
         iterator.set_postfix(loss='{}'.format(loss.item()))
-
-
+        
+    
     iterator.set_postfix(loss=np.average(batch_loss))
     torch.save(model.state_dict(), f"{time.time()}_{epoch}.pt")
     test_loop(model,train_loader)
