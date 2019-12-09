@@ -180,9 +180,6 @@ for epoch in range(params.nof_epoch):
         loss = CCE(o, targets.long())
         # end of changes
 
-        if (i_batch == 10):
-            break
-
         #loss = CCE(o, target_batch)
 
         losses.append(loss.item())
