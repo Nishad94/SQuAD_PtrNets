@@ -58,7 +58,7 @@ class dataset(Dataset):
         return dict_ret
     
 df_format_full = pd.read_pickle("processed_data.pkl")
-df_format_final = df_format_full.iloc[0:18500, :]
+df_format_final = df_format_full.iloc[0:30000, :]
 
     
 train_data = dataset(df_format_final)
