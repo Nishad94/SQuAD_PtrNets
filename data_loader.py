@@ -94,7 +94,7 @@ val_data = val_dataset(val_df)
 
 
 # create train and test dataloader objects
-train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = True) 
+train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = False) 
 val_loader = torch.utils.data.DataLoader(val_data, batch_size = 1, shuffle = False) 
 #test_loader = torch.utils.data.DataLoader(test_data, batch_size = bs, collate_fn = collate, shuffle = False) 
 
