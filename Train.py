@@ -50,6 +50,12 @@ parser.add_argument('--bidir', default=True, action='store_true', help='Bidirect
 
 params = parser.parse_args()
 
+from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM
+modelBERT = BertModel.from_pretrained('bert-base-uncased')
+modelBERT.eval()
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+
+
 if params.gpu and torch.cuda.is_available():
     USE_CUDA = True
     print('Using GPU, %i devices.' % torch.cuda.device_count())
@@ -141,11 +147,11 @@ def test_loop_s2s(model,loader):
             print(total_f1/(i_batch+1))
     print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
 
-
 for epoch in range(params.nof_epoch):
     batch_loss = []
     iterator = tqdm(train_loader, unit='Batch')
-
+    print ('Epoch', epoch)
+    c = 0
     for i_batch, sample_batched in enumerate(iterator):
         iterator.set_description('Batch %i/%i' % (epoch+1, params.nof_epoch))
 
@@ -153,25 +159,27 @@ for epoch in range(params.nof_epoch):
         train_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2).long()
         target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
         train_batch_quest_text = sample_batched["Question_Txt"]
-        train_batch_para_text = sample_batched["Context_Txt"]
-        # questionEmbedding = modelBERT.encode(train_batch_quest_text)
-        # paraEmbedding = modelBERT.encode(train_batch_para_text)
-        
+        train_batch_para_text = sample_batched["Context_Txt"] 
 
         if USE_CUDA:
             train_batch_para = train_batch_para.cuda()
             train_batch_quest = train_batch_quest.cuda()
             target_batch = target_batch.cuda()
-        
+
+        target_batch = target_batch.view(-1)
+        #print (target_batch)
+        if target_batch[0] > 511 or target_batch[1] > 511:
+            print (target_batch)
+            continue
         # o, p = model(train_batch_para,train_batch_quest)
         # o = o.contiguous().view(-1, o.size()[-1])
         o = model(train_batch_para,train_batch_quest, train_batch_para_text, train_batch_quest_text)
-        target_batch = target_batch.view(-1)
 
         # print ('Here')
         # import pdb
         # pdb.set_trace()
         # Changes for baseline s2s
+
         targets = torch.zeros(o.size(0))
         targets[target_batch[0]] = 1
         targets[target_batch[1]] = 2
