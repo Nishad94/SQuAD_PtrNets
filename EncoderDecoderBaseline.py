@@ -4,15 +4,18 @@ import torch
 import torch.nn as nn
 
 
-from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM
-modelBERT = BertModel.from_pretrained('bert-base-uncased')
-modelBERT.eval()
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 if torch.cuda.is_available():
     USE_CUDA = True
 else:
     USE_CUDA = False
+
+from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM
+modelBERT = BertModel.from_pretrained('bert-base-uncased')
+if USE_CUDA:
+    modelBERT.cuda()
+modelBERT.eval()
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 
 def getContextBertEmbeddings(sentence):
@@ -27,7 +30,13 @@ def getContextBertEmbeddings(sentence):
     # Convert inputs to PyTorch tensors
     segments_ids = [1] * len(tokenized_text)
     tokens_tensor = torch.tensor([indexed_token])
+
     segments_tensors = torch.tensor([segments_ids])
+
+    if USE_CUDA:
+        tokens_tensor = tokens_tensor.cuda()
+        segments_tensors = segments_tensors.cuda()
+
     #print (segments_tensors, tokens_tensor, len(tokenized_text))
     with torch.no_grad():
         encoded_layers, _ = modelBERT(tokens_tensor, segments_tensors)
@@ -103,14 +112,11 @@ class BasicS2S(nn.Module):
         # embedded_ques = self.embedding(quest_inputs)
 
 
+
+
         embedded_para = getContextBertEmbeddings(inputs_text[0]).unsqueeze(1)
         embedded_ques = getContextBertEmbeddings(questions_text[0]).unsqueeze(1)
 
-        if USE_CUDA:
-            embedded_para = embedded_para.cuda()
-            embedded_ques = embedded_ques.cuda()
-        
-        
         
         # ques_len * 1 * hidden, _
         question_lstm_out,_ = self.question_encoder.forward(embedded_ques)
