@@ -66,7 +66,7 @@ def vec_int(str_ip, count_missing):
 count_missing = 0
 
 model = BasicS2S(len(word2idx),768,256).cuda()
-model.load_state_dict(torch.load("1575985691.8680089_19.pt"))
+model.load_state_dict(torch.load("../../SQuAD_PtrNets/1575985691.8680089_19.pt"))
 model.eval()
 
 USE_CUDA = True
@@ -161,16 +161,17 @@ def val_loop_lengthwise(model, loader):
         para = [l for item in para[0] for l in item]
         target_start = target_batch.tolist()[0][0][0]
         target_end = target_batch.tolist()[0][1][0]+1
-        target_len = target_end - target_start
+        target_len = int(target_end) - int(target_start)
+        target_len = target_len // 5
         score = compute_f1(para[start_pos:end_pos+1],para[target_start:target_end])
-        if target_len not in avg_f1_by_len:
+        if target_len not in total_f1_by_len:
             total_f1_by_len[target_len] = 0.0
             count_by_len[target_len] = 0
         total_f1_by_len[target_len] += score
         count_by_len[target_len] += 1
     print("Avg F1 by target length: ")
     for k,v in total_f1_by_len.items():
-        print(f"{k} = {v/count_by_len[k]})
+        print(f"Target_len = {k}, Count: {count_by_len[k]} {v/count_by_len[k]}")
 
 
 
@@ -227,4 +228,5 @@ def val_loop_lengthwise(model, loader):
 #     #break
 # print ('Done')
 
-val_loop_s2s(model,val_loader)
+#val_loop_s2s(model,val_loader)
+val_loop_lengthwise(model, val_loader)
