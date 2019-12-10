@@ -20,7 +20,7 @@ from tqdm import tqdm
 from PointerNet import PointerNet
 from Data_Generator import TSPDataset
 
-from data_loader import train_loader, word2idx
+from data_loader import train_loader, val_loader, word2idx
 from eval import compute_f1
 
 parser = argparse.ArgumentParser(description="Pytorch implementation of Pointer-Net")
@@ -136,5 +136,5 @@ for epoch in range(params.nof_epoch):
     
     iterator.set_postfix(loss=np.average(batch_loss))
     torch.save(model.state_dict(), f"{time.time()}_{epoch}.pt")
-    test_loop(model,train_loader)
+    test_loop(model,val_loader)
     

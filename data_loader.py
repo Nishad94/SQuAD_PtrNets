@@ -56,17 +56,22 @@ class dataset(Dataset):
         dict_ret['Answer'] = torch.LongTensor(answerWindow)
 #        print (type(dict_ret))
         return dict_ret
-    
-df_format_full = pd.read_pickle("processed_data.pkl")
-df_format_final = df_format_full.iloc[0:20000, :]
 
-    
+valStartIndex = 20000
+valExamples = 2000
+
+df_format_full = pd.read_pickle("processed_data.pkl")
+df_format_final = df_format_full.iloc[0:valStartIndex, :]
+val_df = df_format_full.iloc[valStartIndex:valExamples, :]
+
 train_data = dataset(df_format_final)
+val_data = dataset(val_df)
 # test_data = dataset(df_format)
 
 
 # create train and test dataloader objects
 train_loader = torch.utils.data.DataLoader(train_data, batch_size = 1, shuffle = True) 
+val_loader = torch.utils.data.DataLoader(val_data, batch_size = 1, shuffle = False) 
 #test_loader = torch.utils.data.DataLoader(test_data, batch_size = bs, collate_fn = collate, shuffle = False) 
 
 # uncomment below for testing
