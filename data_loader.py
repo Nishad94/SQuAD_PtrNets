@@ -40,7 +40,7 @@ class dataset(Dataset):
         self.df = data_dir
                 
     def __len__(self):
-        return len(self.df)
+        return 1000
 
     def __getitem__(self, i): # return single data item
         dict_ret = {}
