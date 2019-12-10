@@ -37,6 +37,9 @@ for i_batch, sample_batched in enumerate(iterator):
     emb = getQuestionBertEmbeddings(train_batch_quest_text[0])
     emb = emb.squeeze(0)
     emb = emb.unsqueeze(1).unsqueeze(2)
+    emb = torch.cat([emb,emb,emb],dim=0)[:2048,:,:]
+    import pdb
+    pdb.set_trace()
     context_feats.append(emb)
 
 concat_feats = torch.stack(context_feats)
