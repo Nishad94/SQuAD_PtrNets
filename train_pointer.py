@@ -106,35 +106,36 @@ for epoch in range(params.nof_epoch):
     batch_loss = []
     iterator = tqdm(train_loader, unit='Batch')
     model.train()
-    for i_batch, sample_batched in enumerate(iterator):
-        iterator.set_description('Batch %i/%i' % (epoch+1, params.nof_epoch))
+    # for i_batch, sample_batched in enumerate(iterator):
+    #     iterator.set_description('Batch %i/%i' % (epoch+1, params.nof_epoch))
 
-        train_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
-        train_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
-        target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
+    #     train_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
+    #     train_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
+    #     target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
 
-        if USE_CUDA:
-            train_batch_para = train_batch_para.cuda()
-            train_batch_quest = train_batch_quest.cuda()
-            target_batch = target_batch.cuda()
-        #print (type(train_batch_para),type(train_batch_quest))
-        o, p = model(train_batch_para,train_batch_quest)
-        o = o.contiguous().view(-1, o.size()[-1])
+    #     if USE_CUDA:
+    #         train_batch_para = train_batch_para.cuda()
+    #         train_batch_quest = train_batch_quest.cuda()
+    #         target_batch = target_batch.cuda()
+    #     #print (type(train_batch_para),type(train_batch_quest))
+    #     o, p = model(train_batch_para,train_batch_quest)
+    #     o = o.contiguous().view(-1, o.size()[-1])
 
-        target_batch = target_batch.view(-1)
-        loss = CCE(o, target_batch)
+    #     target_batch = target_batch.view(-1)
+    #     loss = CCE(o, target_batch)
 
-        losses.append(loss.item())
-        batch_loss.append(loss.item())
+    #     losses.append(loss.item())
+    #     batch_loss.append(loss.item())
 
-        model_optim.zero_grad()
-        loss.backward()
-        model_optim.step()
+    #     model_optim.zero_grad()
+    #     loss.backward()
+    #     model_optim.step()
 
-        iterator.set_postfix(loss='{}'.format(loss.item()))
+    #     iterator.set_postfix(loss='{}'.format(loss.item()))
         
     
     iterator.set_postfix(loss=np.average(batch_loss))
     torch.save(model.state_dict(), f"{time.time()}_{epoch}.pt")
+    model.eval()
     test_loop(model,val_loader)
     
