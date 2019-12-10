@@ -85,8 +85,8 @@ if USE_CUDA:
     model.cuda()
     net = torch.nn.DataParallel(model, device_ids=range(torch.cuda.device_count()))
     cudnn.benchmark = True
-
-CCE = torch.nn.CrossEntropyLoss()
+weight=torch.Tensor([1, 2, 1]).cuda()
+CCE = torch.nn.CrossEntropyLoss(weight = weight)
 model_optim = optim.Adam(filter(lambda p: p.requires_grad,
                                 model.parameters()),
                          lr=params.lr)
