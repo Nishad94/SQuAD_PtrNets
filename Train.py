@@ -147,7 +147,6 @@ def test_loop_s2s(model,loader):
             print(total_f1/(i_batch+1))
     print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
 
-params.nof_epoch = 1
 for epoch in range(params.nof_epoch):
     batch_loss = []
     iterator = tqdm(train_loader, unit='Batch')
