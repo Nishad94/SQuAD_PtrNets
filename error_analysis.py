@@ -133,6 +133,47 @@ def val_loop_s2s(model,loader):
     print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
 
 
+def val_loop_lengthwise(model, loader):
+    iterator = tqdm(loader, unit='Batch')
+    total_f1 = 0.0
+    total_f1_by_len = {}
+    count_by_len = {}
+    
+    for i_batch, sample_batched in enumerate(iterator):
+        #iterator.set_description('Test Batch %i/%i' % (1, params.nof_epoch))
+        test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
+        test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
+        target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
+        test_batch_quest_text = sample_batched["Question_Txt"]
+        test_batch_para_text = sample_batched["Context_Txt"]
+        #if USE_CUDA:
+        test_batch_para = test_batch_para.cuda()
+        test_batch_quest = test_batch_quest.cuda()
+        # para_len * 3
+        o = model(test_batch_para,test_batch_quest, test_batch_para_text, test_batch_quest_text)
+        start_probs = o[:,1]
+        end_probs = o[:,2]
+        start_pos = torch.argmax(start_probs)
+        end_pos = torch.argmax(end_probs)
+        
+        para = test_batch_para.tolist()
+        # Flatten 
+        para = [l for item in para[0] for l in item]
+        target_start = target_batch.tolist()[0][0][0]
+        target_end = target_batch.tolist()[0][1][0]+1
+        target_len = target_end - target_start
+        score = compute_f1(para[start_pos:end_pos+1],para[target_start:target_end])
+        if target_len not in avg_f1_by_len:
+            total_f1_by_len[target_len] = 0.0
+            count_by_len[target_len] = 0
+        total_f1_by_len[target_len] += score
+        count_by_len[target_len] += 1
+    print("Avg F1 by target length: ")
+    for k,v in total_f1_by_len.items():
+        print(f"{k} = {v/count_by_len[k]})
+
+
+
 # class dataset(Dataset):
 #     def __init__(self, data_dir):
 #         super(dataset, self).__init__()
