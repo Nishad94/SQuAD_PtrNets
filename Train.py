@@ -166,16 +166,21 @@ for epoch in range(params.nof_epoch):
             train_batch_para = train_batch_para.cuda()
             train_batch_quest = train_batch_quest.cuda()
             target_batch = target_batch.cuda()
-        
+
+        target_batch = target_batch.view(-1)
+        #print (target_batch)
+        if target_batch[0] > 511 or target_batch[1] > 511:
+            print (target_batch)
+            continue
         # o, p = model(train_batch_para,train_batch_quest)
         # o = o.contiguous().view(-1, o.size()[-1])
         o = model(train_batch_para,train_batch_quest, train_batch_para_text, train_batch_quest_text)
-        target_batch = target_batch.view(-1)
 
         # print ('Here')
         # import pdb
         # pdb.set_trace()
         # Changes for baseline s2s
+
         targets = torch.zeros(o.size(0))
         targets[target_batch[0]] = 1
         targets[target_batch[1]] = 2
