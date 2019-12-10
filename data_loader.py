@@ -31,7 +31,8 @@ def vec_int(str_ip, count_missing):
     return lst_ret, count_missing, is_invalid
 
 count_missing = 0
-
+valStartIndex = 20000
+valExamples = 2000
 
 class dataset(Dataset):
     def __init__(self, data_dir):
@@ -57,15 +58,38 @@ class dataset(Dataset):
 #        print (type(dict_ret))
         return dict_ret
 
-valStartIndex = 20000
-valExamples = 2000
+class val_dataset(Dataset):
+    def __init__(self, data_dir):
+        super(val_dataset, self).__init__()
+        self.df = data_dir
+                
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, old_i): # return single data item
+        dict_ret = {}
+        i = old_i + valStartIndex
+
+        answerWindow = [int(self.df['Answer'][i][0][0]), int(self.df['Answer'][i][0][1]) - 1]
+        lst_quest, _, _ = vec_int(self.df['Question'][i], count_missing)
+        lst_context, _, _ = vec_int(self.df['Context'][i], count_missing)
+        
+        dict_ret['Question_Txt'] = self.df['Question'][i]
+        dict_ret['Question_Tensor'] = torch.LongTensor(lst_quest)
+        dict_ret['Context_Txt'] = self.df['Context'][i]
+        dict_ret['Context_Tensor'] = torch.LongTensor(lst_context)
+        dict_ret['Answer'] = torch.LongTensor(answerWindow)
+#        print (type(dict_ret))
+        return dict_ret
+
+
 
 df_format_full = pd.read_pickle("processed_data.pkl")
 df_format_final = df_format_full.iloc[0:valStartIndex, :]
-val_df = df_format_full.iloc[valStartIndex:valExamples, :]
+val_df = df_format_full.iloc[valStartIndex:valStartIndex + valExamples, :]
 
 train_data = dataset(df_format_final)
-val_data = dataset(val_df)
+val_data = val_dataset(val_df)
 # test_data = dataset(df_format)
 
 
