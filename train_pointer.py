@@ -87,10 +87,12 @@ def test_loop(model,loader):
         test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
         test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
         target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
+        train_batch_quest_text = sample_batched["Question_Txt"]
+        train_batch_para_text = sample_batched["Context_Txt"] 
         if USE_CUDA:
             test_batch_para = test_batch_para.cuda()
             test_batch_quest = test_batch_quest.cuda()
-        o, p = model(test_batch_para,test_batch_quest)
+        o, p = model(test_batch_para,test_batch_quest,train_batch_para_text,train_batch_quest_text)
         # Convert to list
         p_ = p.tolist()[0]
         p_.sort()
@@ -100,8 +102,6 @@ def test_loop(model,loader):
         total_f1 += compute_f1(para[p_[0]:p_[1]+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1])
         if i_batch % 100 == 0:
             print('Batch', i_batch, total_f1/(i_batch+1))
-    import pdb
-    pdb.set_trace()
     print(f"Final Average F1 score (across {len(loader)} examples): {total_f1/len(loader)}")
 
 for epoch in range(params.nof_epoch):
@@ -114,13 +114,14 @@ for epoch in range(params.nof_epoch):
         train_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
         train_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
         target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
-
+        train_batch_quest_text = sample_batched["Question_Txt"]
+        train_batch_para_text = sample_batched["Context_Txt"] 
         if USE_CUDA:
             train_batch_para = train_batch_para.cuda()
             train_batch_quest = train_batch_quest.cuda()
             target_batch = target_batch.cuda()
         #print (type(train_batch_para),type(train_batch_quest))
-        o, p = model(train_batch_para,train_batch_quest)
+        o, p = model(train_batch_para,train_batch_quest,train_batch_para_text,train_batch_quest_text)
         o = o.contiguous().view(-1, o.size()[-1])
 
         target_batch = target_batch.view(-1)
