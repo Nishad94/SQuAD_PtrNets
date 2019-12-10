@@ -1,0 +1,777 @@
+
+Score: 0
+Question: ['In what year was a tuna loining plant constructed']
+Context: ['In 1999, a private company built a tuna loining plant with more than 400 employees, mostly women. But the plant closed in 2005 after a failed attempt to convert it to produce tuna steaks, a process that requires half as many employees. Operating costs exceeded revenue, and the plant owners tried to partner with the government to prevent closure. But government officials personally interested in an economic stake in the plant refused to help. After the plant closed, it was taken over by the government, which had been the guarantor of a $2 million loan to the business.[citation needed]']
+Predicted Answer
+
+ Target Answer: 1999 
+
+Score: 0
+Question: ['How many people worked at the tuna loining plant']
+Context: ['In 1999, a private company built a tuna loining plant with more than 400 employees, mostly women. But the plant closed in 2005 after a failed attempt to convert it to produce tuna steaks, a process that requires half as many employees. Operating costs exceeded revenue, and the plant owners tried to partner with the government to prevent closure. But government officials personally interested in an economic stake in the plant refused to help. After the plant closed, it was taken over by the government, which had been the guarantor of a $2 million loan to the business.[citation needed]']
+Predicted Answer
+half as many 
+ Target Answer: 400 
+
+Score: 0
+Question: ['In what year did the tuna loining plant shut down']
+Context: ['In 1999, a private company built a tuna loining plant with more than 400 employees, mostly women. But the plant closed in 2005 after a failed attempt to convert it to produce tuna steaks, a process that requires half as many employees. Operating costs exceeded revenue, and the plant owners tried to partner with the government to prevent closure. But government officials personally interested in an economic stake in the plant refused to help. After the plant closed, it was taken over by the government, which had been the guarantor of a $2 million loan to the business.[citation needed]']
+Predicted Answer
+In 1999 
+ Target Answer: 2005 
+
+Score: 0
+Question: ['Before it shut down, what was the tuna loining plant attempting to produce']
+Context: ['In 1999, a private company built a tuna loining plant with more than 400 employees, mostly women. But the plant closed in 2005 after a failed attempt to convert it to produce tuna steaks, a process that requires half as many employees. Operating costs exceeded revenue, and the plant owners tried to partner with the government to prevent closure. But government officials personally interested in an economic stake in the plant refused to help. After the plant closed, it was taken over by the government, which had been the guarantor of a $2 million loan to the business.[citation needed]']
+Predicted Answer
+half as many 
+ Target Answer: tuna steaks 
+
+Score: 0.8
+Question: ['What was the amount of the loan to the tuna loining plant that the Marshall Islands government was responsible for']
+Context: ['In 1999, a private company built a tuna loining plant with more than 400 employees, mostly women. But the plant closed in 2005 after a failed attempt to convert it to produce tuna steaks, a process that requires half as many employees. Operating costs exceeded revenue, and the plant owners tried to partner with the government to prevent closure. But government officials personally interested in an economic stake in the plant refused to help. After the plant closed, it was taken over by the government, which had been the guarantor of a $2 million loan to the business.[citation needed]']
+Predicted Answer
+2 million loan 
+ Target Answer: 2 million 
+
+Score: 0
+Question: ['Who did Witon Barry work for']
+Context: ['On September 15, 2007, Witon Barry (of the Tobolar Copra processing plant in the Marshall Islands capital of Majuro) said power authorities, private companies, and entrepreneurs had been experimenting with coconut oil as alternative to diesel fuel for vehicles, power generators, and ships. Coconut trees abound in the Pacific tropical islands. Copra, the meat of the coconut, yields coconut oil (1 liter for every 6 to 10 coconuts). In 2009, a 57 kW solar power plant was installed, the largest in the Pacific at the time, including New Zealand. It is estimated that 330 kW of solar and 450 kW of wind power would be required to make the College of the Marshall Islands energy self-sufficient. Marshalls Energy Company (MEC), a government entity, provides the islands with electricity. In 2008, 420 solar home systems of 200 Wp each were installed on Ailinglaplap Atoll, sufficient for limited electricity use.']
+Predicted Answer
+
+ Target Answer: the Tobolar Copra processing plant 
+
+Score: 0
+Question: ['Where was the Tobolar Copra plant located']
+Context: ['On September 15, 2007, Witon Barry (of the Tobolar Copra processing plant in the Marshall Islands capital of Majuro) said power authorities, private companies, and entrepreneurs had been experimenting with coconut oil as alternative to diesel fuel for vehicles, power generators, and ships. Coconut trees abound in the Pacific tropical islands. Copra, the meat of the coconut, yields coconut oil (1 liter for every 6 to 10 coconuts). In 2009, a 57 kW solar power plant was installed, the largest in the Pacific at the time, including New Zealand. It is estimated that 330 kW of solar and 450 kW of wind power would be required to make the College of the Marshall Islands energy self-sufficient. Marshalls Energy Company (MEC), a government entity, provides the islands with electricity. In 2008, 420 solar home systems of 200 Wp each were installed on Ailinglaplap Atoll, sufficient for limited electricity use.']
+Predicted Answer
+
+ Target Answer: Majuro 
+
+Score: 0
+Question: ['What is copra']
+Context: ['On September 15, 2007, Witon Barry (of the Tobolar Copra processing plant in the Marshall Islands capital of Majuro) said power authorities, private companies, and entrepreneurs had been experimenting with coconut oil as alternative to diesel fuel for vehicles, power generators, and ships. Coconut trees abound in the Pacific tropical islands. Copra, the meat of the coconut, yields coconut oil (1 liter for every 6 to 10 coconuts). In 2009, a 57 kW solar power plant was installed, the largest in the Pacific at the time, including New Zealand. It is estimated that 330 kW of solar and 450 kW of wind power would be required to make the College of the Marshall Islands energy self-sufficient. Marshalls Energy Company (MEC), a government entity, provides the islands with electricity. In 2008, 420 solar home systems of 200 Wp each were installed on Ailinglaplap Atoll, sufficient for limited electricity use.']
+Predicted Answer
+Islands capital 
+ Target Answer: the meat of the coconut 
+
+Score: 0
+Question: ['How many coconuts are required to produce 1 liter of coconut oil']
+Context: ['On September 15, 2007, Witon Barry (of the Tobolar Copra processing plant in the Marshall Islands capital of Majuro) said power authorities, private companies, and entrepreneurs had been experimenting with coconut oil as alternative to diesel fuel for vehicles, power generators, and ships. Coconut trees abound in the Pacific tropical islands. Copra, the meat of the coconut, yields coconut oil (1 liter for every 6 to 10 coconuts). In 2009, a 57 kW solar power plant was installed, the largest in the Pacific at the time, including New Zealand. It is estimated that 330 kW of solar and 450 kW of wind power would be required to make the College of the Marshall Islands energy self-sufficient. Marshalls Energy Company (MEC), a government entity, provides the islands with electricity. In 2008, 420 solar home systems of 200 Wp each were installed on Ailinglaplap Atoll, sufficient for limited electricity use.']
+Predicted Answer
+
+ Target Answer: 6 to 10 
+
+Score: 0
+Question: ['How many kilowatts of power are produced by the solar plant built in 2009']
+Context: ['On September 15, 2007, Witon Barry (of the Tobolar Copra processing plant in the Marshall Islands capital of Majuro) said power authorities, private companies, and entrepreneurs had been experimenting with coconut oil as alternative to diesel fuel for vehicles, power generators, and ships. Coconut trees abound in the Pacific tropical islands. Copra, the meat of the coconut, yields coconut oil (1 liter for every 6 to 10 coconuts). In 2009, a 57 kW solar power plant was installed, the largest in the Pacific at the time, including New Zealand. It is estimated that 330 kW of solar and 450 kW of wind power would be required to make the College of the Marshall Islands energy self-sufficient. Marshalls Energy Company (MEC), a government entity, provides the islands with electricity. In 2008, 420 solar home systems of 200 Wp each were installed on Ailinglaplap Atoll, sufficient for limited electricity use.']
+Predicted Answer
+
+ Target Answer: 57 
+
+Score: 0.8571428571428571
+Question: ['About how many people lived in the Marshall Islands in 1862']
+Context: ['Historical population figures are unknown. In 1862, the population was estimated at about 10,000. In 1960, the entire population was about 15,000. In July 2011, the number of island residents was estimated to number about 72,191. Over two-thirds of the population live in the capital, Majuro and Ebeye, the secondary urban center, located in Kwajalein Atoll. This excludes many who have relocated elsewhere, primarily to the United States. The Compact of Free Association allows them to freely relocate to the United States and obtain work there. A large concentration of about 4,300 Marshall Islanders have relocated to Springdale, Arkansas, the largest population concentration of natives outside their island home.']
+Predicted Answer
+about 10 , 000 
+ Target Answer: 10 , 000 
+
+Score: 0.28571428571428575
+Question: ['How many people lived in the Marshall Islands in 1960']
+Context: ['Historical population figures are unknown. In 1862, the population was estimated at about 10,000. In 1960, the entire population was about 15,000. In July 2011, the number of island residents was estimated to number about 72,191. Over two-thirds of the population live in the capital, Majuro and Ebeye, the secondary urban center, located in Kwajalein Atoll. This excludes many who have relocated elsewhere, primarily to the United States. The Compact of Free Association allows them to freely relocate to the United States and obtain work there. A large concentration of about 4,300 Marshall Islanders have relocated to Springdale, Arkansas, the largest population concentration of natives outside their island home.']
+Predicted Answer
+about 72 , 191 
+ Target Answer: 15 , 000 
+
+Score: 0.3333333333333333
+Question: ['As of July 2011, how many people resided on the Marshall Islands']
+Context: ['Historical population figures are unknown. In 1862, the population was estimated at about 10,000. In 1960, the entire population was about 15,000. In July 2011, the number of island residents was estimated to number about 72,191. Over two-thirds of the population live in the capital, Majuro and Ebeye, the secondary urban center, located in Kwajalein Atoll. This excludes many who have relocated elsewhere, primarily to the United States. The Compact of Free Association allows them to freely relocate to the United States and obtain work there. A large concentration of about 4,300 Marshall Islanders have relocated to Springdale, Arkansas, the largest population concentration of natives outside their island home.']
+Predicted Answer
+15 , 000 
+ Target Answer: 72 , 191 
+
+Score: 0
+Question: ['On what atoll is Ebeye located']
+Context: ['Historical population figures are unknown. In 1862, the population was estimated at about 10,000. In 1960, the entire population was about 15,000. In July 2011, the number of island residents was estimated to number about 72,191. Over two-thirds of the population live in the capital, Majuro and Ebeye, the secondary urban center, located in Kwajalein Atoll. This excludes many who have relocated elsewhere, primarily to the United States. The Compact of Free Association allows them to freely relocate to the United States and obtain work there. A large concentration of about 4,300 Marshall Islanders have relocated to Springdale, Arkansas, the largest population concentration of natives outside their island home.']
+Predicted Answer
+Historical population figures are unknown . In 1862 , the population was estimated at about 10 , 000 . In 1960 , the entire population was about 15 , 000 . In July 2011 , the number of island residents was estimated to number about 72 , 191 
+ Target Answer: Kwajalein Atoll 
+
+Score: 0.18181818181818182
+Question: ['What town hosts the largest number of Marshall Islanders outside the Marshall Islands']
+Context: ['Historical population figures are unknown. In 1862, the population was estimated at about 10,000. In 1960, the entire population was about 15,000. In July 2011, the number of island residents was estimated to number about 72,191. Over two-thirds of the population live in the capital, Majuro and Ebeye, the secondary urban center, located in Kwajalein Atoll. This excludes many who have relocated elsewhere, primarily to the United States. The Compact of Free Association allows them to freely relocate to the United States and obtain work there. A large concentration of about 4,300 Marshall Islanders have relocated to Springdale, Arkansas, the largest population concentration of natives outside their island home.']
+Predicted Answer
+the entire population was about 15 , 000 
+ Target Answer: Springdale , Arkansas 
+
+Score: 0
+Question: ['What is the ethnicity of most Marshall Islands residents']
+Context: ['Most of the residents are Marshallese, who are of Micronesian origin and migrated from Asia several thousand years ago. A minority of Marshallese have some recent Asian ancestry, mainly Japanese. About one-half of the nation population lives on Majuro, the capital, and Ebeye, a densely populated island. The outer islands are sparsely populated due to lack of employment opportunities and economic development. Life on the outer atolls is generally traditional.']
+Predicted Answer
+
+ Target Answer: Marshallese 
+
+Score: 0
+Question: ['What fraction of the population lives on Majuro or Ebeye']
+Context: ['Most of the residents are Marshallese, who are of Micronesian origin and migrated from Asia several thousand years ago. A minority of Marshallese have some recent Asian ancestry, mainly Japanese. About one-half of the nation population lives on Majuro, the capital, and Ebeye, a densely populated island. The outer islands are sparsely populated due to lack of employment opportunities and economic development. Life on the outer atolls is generally traditional.']
+Predicted Answer
+
+ Target Answer: one half 
+
+Score: 0
+Question: ['What recent Asian ancestry do some Marshall Island residents have']
+Context: ['Most of the residents are Marshallese, who are of Micronesian origin and migrated from Asia several thousand years ago. A minority of Marshallese have some recent Asian ancestry, mainly Japanese. About one-half of the nation population lives on Majuro, the capital, and Ebeye, a densely populated island. The outer islands are sparsely populated due to lack of employment opportunities and economic development. Life on the outer atolls is generally traditional.']
+Predicted Answer
+
+ Target Answer: Japanese 
+
+Score: 0.22222222222222224
+Question: ['From when did the Marshallese migrate from the Asian continent']
+Context: ['Most of the residents are Marshallese, who are of Micronesian origin and migrated from Asia several thousand years ago. A minority of Marshallese have some recent Asian ancestry, mainly Japanese. About one-half of the nation population lives on Majuro, the capital, and Ebeye, a densely populated island. The outer islands are sparsely populated due to lack of employment opportunities and economic development. Life on the outer atolls is generally traditional.']
+Predicted Answer
+and migrated from Asia several 
+ Target Answer: several thousand years ago 
+
+Score: 0
+Question: ['What was the previous name of the United Church of Christ']
+Context: ['Major religious groups in the Republic of the Marshall Islands include the United Church of Christ (formerly Congregational), with 51.5% of the population; the Assemblies of God, 24.2%; the Roman Catholic Church, 8.4%; and The Church of Jesus Christ of Latter-day Saints (Mormons), 8.3%; Also represented are Bukot Nan Jesus (also known as Assembly of God Part Two), 2.2%; Baptist, 1.0%; Seventh-day Adventists, 0.9%; Full Gospel, 0.7%; and the Bahai Faith, 0.6%; Persons without any religious affiliation account for a very small percentage of the population. There is also a small community of Ahmadiyya Muslims based in Majuro, with the first mosque opening in the capital in September 2012.']
+Predicted Answer
+the United Church of Christ 
+ Target Answer: Congregational 
+
+Score: 0
+Question: ['What percentage of Marshall Islanders belong to the Assemblies of God']
+Context: ['Major religious groups in the Republic of the Marshall Islands include the United Church of Christ (formerly Congregational), with 51.5% of the population; the Assemblies of God, 24.2%; the Roman Catholic Church, 8.4%; and The Church of Jesus Christ of Latter-day Saints (Mormons), 8.3%; Also represented are Bukot Nan Jesus (also known as Assembly of God Part Two), 2.2%; Baptist, 1.0%; Seventh-day Adventists, 0.9%; Full Gospel, 0.7%; and the Bahai Faith, 0.6%; Persons without any religious affiliation account for a very small percentage of the population. There is also a small community of Ahmadiyya Muslims based in Majuro, with the first mosque opening in the capital in September 2012.']
+Predicted Answer
+
+ Target Answer: 24 . 2 
+
+Score: 0
+Question: ['What percentage of Marshall Islands residents are Mormons']
+Context: ['Major religious groups in the Republic of the Marshall Islands include the United Church of Christ (formerly Congregational), with 51.5% of the population; the Assemblies of God, 24.2%; the Roman Catholic Church, 8.4%; and The Church of Jesus Christ of Latter-day Saints (Mormons), 8.3%; Also represented are Bukot Nan Jesus (also known as Assembly of God Part Two), 2.2%; Baptist, 1.0%; Seventh-day Adventists, 0.9%; Full Gospel, 0.7%; and the Bahai Faith, 0.6%; Persons without any religious affiliation account for a very small percentage of the population. There is also a small community of Ahmadiyya Muslims based in Majuro, with the first mosque opening in the capital in September 2012.']
+Predicted Answer
+
+ Target Answer: 8 . 3 
+
+Score: 0
+Question: ['What percentage of Marshall Islanders worship at the Assembly of God Part Two']
+Context: ['Major religious groups in the Republic of the Marshall Islands include the United Church of Christ (formerly Congregational), with 51.5% of the population; the Assemblies of God, 24.2%; the Roman Catholic Church, 8.4%; and The Church of Jesus Christ of Latter-day Saints (Mormons), 8.3%; Also represented are Bukot Nan Jesus (also known as Assembly of God Part Two), 2.2%; Baptist, 1.0%; Seventh-day Adventists, 0.9%; Full Gospel, 0.7%; and the Bahai Faith, 0.6%; Persons without any religious affiliation account for a very small percentage of the population. There is also a small community of Ahmadiyya Muslims based in Majuro, with the first mosque opening in the capital in September 2012.']
+Predicted Answer
+
+ Target Answer: 2 . 2 
+
+Score: 0
+Question: ['When did the first mosque in Majuro open']
+Context: ['Major religious groups in the Republic of the Marshall Islands include the United Church of Christ (formerly Congregational), with 51.5% of the population; the Assemblies of God, 24.2%; the Roman Catholic Church, 8.4%; and The Church of Jesus Christ of Latter-day Saints (Mormons), 8.3%; Also represented are Bukot Nan Jesus (also known as Assembly of God Part Two), 2.2%; Baptist, 1.0%; Seventh-day Adventists, 0.9%; Full Gospel, 0.7%; and the Bahai Faith, 0.6%; Persons without any religious affiliation account for a very small percentage of the population. There is also a small community of Ahmadiyya Muslims based in Majuro, with the first mosque opening in the capital in September 2012.']
+Predicted Answer
+
+ Target Answer: September 2012 
+
+Score: 0
+Question: ['What body operates the state schools in the Marshall Islands']
+Context: ['The Ministry of Education (Marshall Islands) operates the state schools in the Marshall Islands. There are two tertiary institutions operating in the Marshall Islands, the College of the Marshall Islands and the University of the South Pacific.']
+Predicted Answer
+
+ Target Answer: Ministry of Education Marshall Islands 
+
+Score: 0
+Question: ['Along with the University of the South Pacific, what tertiary education institution exists in the Marshall Islands']
+Context: ['The Ministry of Education (Marshall Islands) operates the state schools in the Marshall Islands. There are two tertiary institutions operating in the Marshall Islands, the College of the Marshall Islands and the University of the South Pacific.']
+Predicted Answer
+
+ Target Answer: College of the Marshall Islands 
+
+Score: 0
+Question: ['Where is the Marshall Islands International Airport located']
+Context: ['The Marshall Islands are served by the Marshall Islands International Airport in Majuro, the Bucholz Army Airfield in Kwajalein, and other small airports and airstrips.']
+Predicted Answer
+Kwajalein , and 
+ Target Answer: Majuro 
+
+Score: 0
+Question: ['What airfield operates in Kwajalein']
+Context: ['The Marshall Islands are served by the Marshall Islands International Airport in Majuro, the Bucholz Army Airfield in Kwajalein, and other small airports and airstrips.']
+Predicted Answer
+the Marshall Islands International Airport 
+ Target Answer: Bucholz Army Airfield 
+
+Score: 0
+Question: ['What class was slackta in Poland']
+Context: ['The szlachta ([Ë\x88Ê\x82laxta] ( listen), exonym: Nobility) was a legally privileged noble class with origins in the Kingdom of Poland. It gained considerable institutional privileges between 1333 and 1370 during the reign of King Casimir III the Great.:211 In 1413, following a series of tentative personal unions between the Grand Duchy of Lithuania and the Crown Kingdom of Poland, the existing Lithuanian nobility formally joined this class.:211 As the Polish-Lithuanian Commonwealth (1569â\x80\x931795) evolved and expanded in territory, its membership grew to include the leaders of Ducal Prussia, Podolian and Ruthenian lands.']
+Predicted Answer
+between 1333 and 
+ Target Answer: noble class 
+
+Score: 0.10309278350515463
+Question: ['Under whos reign did the szlachta gain institutional privileges']
+Context: ['The szlachta ([Ë\x88Ê\x82laxta] ( listen), exonym: Nobility) was a legally privileged noble class with origins in the Kingdom of Poland. It gained considerable institutional privileges between 1333 and 1370 during the reign of King Casimir III the Great.:211 In 1413, following a series of tentative personal unions between the Grand Duchy of Lithuania and the Crown Kingdom of Poland, the existing Lithuanian nobility formally joined this class.:211 As the Polish-Lithuanian Commonwealth (1569â\x80\x931795) evolved and expanded in territory, its membership grew to include the leaders of Ducal Prussia, Podolian and Ruthenian lands.']
+Predicted Answer
+was a legally privileged noble class with origins in the Kingdom of Poland . It gained considerable institutional privileges between 1333 and 1370 during the reign of King Casimir III the Great . 211 In 1413 , following a series of tentative personal unions between the Grand Duchy of Lithuania and the Crown Kingdom of Poland , the existing Lithuanian nobility formally joined this class . 211 As the Polish Lithuanian Commonwealth 1569â 1795 evolved and expanded in territory , its membership grew to include the leaders of Ducal Prussia , Podolian 
+ Target Answer: King Casimir III the Great 
+
+Score: 0
+Question: ['WHich two kingdoms shared tentative personal unions']
+Context: ['The szlachta ([Ë\x88Ê\x82laxta] ( listen), exonym: Nobility) was a legally privileged noble class with origins in the Kingdom of Poland. It gained considerable institutional privileges between 1333 and 1370 during the reign of King Casimir III the Great.:211 In 1413, following a series of tentative personal unions between the Grand Duchy of Lithuania and the Crown Kingdom of Poland, the existing Lithuanian nobility formally joined this class.:211 As the Polish-Lithuanian Commonwealth (1569â\x80\x931795) evolved and expanded in territory, its membership grew to include the leaders of Ducal Prussia, Podolian and Ruthenian lands.']
+Predicted Answer
+
+ Target Answer: Grand Duchy of Lithuania and the Crown Kingdom of Poland 
+
+Score: 0
+Question: ['When did the polish-lithuanian commonwealth thrive']
+Context: ['The szlachta ([Ë\x88Ê\x82laxta] ( listen), exonym: Nobility) was a legally privileged noble class with origins in the Kingdom of Poland. It gained considerable institutional privileges between 1333 and 1370 during the reign of King Casimir III the Great.:211 In 1413, following a series of tentative personal unions between the Grand Duchy of Lithuania and the Crown Kingdom of Poland, the existing Lithuanian nobility formally joined this class.:211 As the Polish-Lithuanian Commonwealth (1569â\x80\x931795) evolved and expanded in territory, its membership grew to include the leaders of Ducal Prussia, Podolian and Ruthenian lands.']
+Predicted Answer
+Casimir III the 
+ Target Answer: 1569â 1795 
+
+Score: 0
+Question: ['What is one leader from the polish-lithuanian common weaith.']
+Context: ['The szlachta ([Ë\x88Ê\x82laxta] ( listen), exonym: Nobility) was a legally privileged noble class with origins in the Kingdom of Poland. It gained considerable institutional privileges between 1333 and 1370 during the reign of King Casimir III the Great.:211 In 1413, following a series of tentative personal unions between the Grand Duchy of Lithuania and the Crown Kingdom of Poland, the existing Lithuanian nobility formally joined this class.:211 As the Polish-Lithuanian Commonwealth (1569â\x80\x931795) evolved and expanded in territory, its membership grew to include the leaders of Ducal Prussia, Podolian and Ruthenian lands.']
+Predicted Answer
+
+ Target Answer: Ducal Prussia 
+
+Score: 0
+Question: ['What is another name for folwarks']
+Context: ['The origins of the szlachta are shrouded in obscurity and mystery and have been the subject of a variety of theories.:207 Traditionally, its members were owners of landed property, often in the form of "manor farms" or so-called folwarks. The nobility negotiated substantial and increasing political and legal privileges for itself throughout its entire history until the decline of the Polish Commonwealth in the late 18th century.']
+Predicted Answer
+
+ Target Answer: manor farms 
+
+Score: 0
+Question: ['Were the szlachta obscure and mysterious or obvious and proud']
+Context: ['The origins of the szlachta are shrouded in obscurity and mystery and have been the subject of a variety of theories.:207 Traditionally, its members were owners of landed property, often in the form of "manor farms" or so-called folwarks. The nobility negotiated substantial and increasing political and legal privileges for itself throughout its entire history until the decline of the Polish Commonwealth in the late 18th century.']
+Predicted Answer
+called folwarks . The 
+ Target Answer: obscurity and mystery 
+
+Score: 0.8
+Question: ['Around what time was the decline of the polish common wealth']
+Context: ['The origins of the szlachta are shrouded in obscurity and mystery and have been the subject of a variety of theories.:207 Traditionally, its members were owners of landed property, often in the form of "manor farms" or so-called folwarks. The nobility negotiated substantial and increasing political and legal privileges for itself throughout its entire history until the decline of the Polish Commonwealth in the late 18th century.']
+Predicted Answer
+18th century 
+ Target Answer: late 18th century 
+
+Score: 0
+Question: ['WHat did the commonwealth increase before it declined']
+Context: ['The origins of the szlachta are shrouded in obscurity and mystery and have been the subject of a variety of theories.:207 Traditionally, its members were owners of landed property, often in the form of "manor farms" or so-called folwarks. The nobility negotiated substantial and increasing political and legal privileges for itself throughout its entire history until the decline of the Polish Commonwealth in the late 18th century.']
+Predicted Answer
+
+ Target Answer: political and legal privileges 
+
+Score: 0
+Question: ['When, during the partitions of Poland, did the szlachta lose legal and social status.']
+Context: ['During the Partitions of Poland from 1772 to 1795, its members began to lose these legal privileges and social status. From that point until 1918, the legal status of the nobility was essentially dependent upon the policies of the three partitioning powers: the Russian Empire, the Kingdom of Prussia, and the Habsburg Monarchy. The legal privileges of the szlachta were legally abolished in the Second Polish Republic by the March Constitution of 1921.']
+Predicted Answer
+the Second Polish Republic by the March Constitution of 1921 . 
+ Target Answer: 1772 to 1795 
+
+Score: 0
+Question: ['What was one name of a power that the szlachta was dependent on']
+Context: ['During the Partitions of Poland from 1772 to 1795, its members began to lose these legal privileges and social status. From that point until 1918, the legal status of the nobility was essentially dependent upon the policies of the three partitioning powers: the Russian Empire, the Kingdom of Prussia, and the Habsburg Monarchy. The legal privileges of the szlachta were legally abolished in the Second Polish Republic by the March Constitution of 1921.']
+Predicted Answer
+szlachta were legally abolished in the Second Polish Republic 
+ Target Answer: Russian Empire 
+
+Score: 0
+Question: ['When was the March constitution implemented']
+Context: ['During the Partitions of Poland from 1772 to 1795, its members began to lose these legal privileges and social status. From that point until 1918, the legal status of the nobility was essentially dependent upon the policies of the three partitioning powers: the Russian Empire, the Kingdom of Prussia, and the Habsburg Monarchy. The legal privileges of the szlachta were legally abolished in the Second Polish Republic by the March Constitution of 1921.']
+Predicted Answer
+1772 to 1795 
+ Target Answer: 1921 
+
+Score: 0
+Question: ['What did the Mach constitution do']
+Context: ['During the Partitions of Poland from 1772 to 1795, its members began to lose these legal privileges and social status. From that point until 1918, the legal status of the nobility was essentially dependent upon the policies of the three partitioning powers: the Russian Empire, the Kingdom of Prussia, and the Habsburg Monarchy. The legal privileges of the szlachta were legally abolished in the Second Polish Republic by the March Constitution of 1921.']
+Predicted Answer
+
+ Target Answer: legal privileges of the szlachta were legally abolished 
+
+Score: 0.8571428571428571
+Question: ['In what republic did the szlachta lose their legal privileges.']
+Context: ['During the Partitions of Poland from 1772 to 1795, its members began to lose these legal privileges and social status. From that point until 1918, the legal status of the nobility was essentially dependent upon the policies of the three partitioning powers: the Russian Empire, the Kingdom of Prussia, and the Habsburg Monarchy. The legal privileges of the szlachta were legally abolished in the Second Polish Republic by the March Constitution of 1921.']
+Predicted Answer
+the Second Polish Republic 
+ Target Answer: Second Polish Republic 
+
+Score: 0
+Question: ['What was the notion for all polish nobles']
+Context: ['The notion that all Polish nobles were social equals, regardless of their financial status or offices held, is enshrined in a traditional Polish saying:']
+Predicted Answer
+
+ Target Answer: social equals 
+
+Score: 0
+Question: ['What ethnic saying is this traditional from']
+Context: ['The notion that all Polish nobles were social equals, regardless of their financial status or offices held, is enshrined in a traditional Polish saying:']
+Predicted Answer
+
+ Target Answer: Polish saying 
+
+Score: 0
+Question: ['Did it matter how much money a person had to polish nobles']
+Context: ['The notion that all Polish nobles were social equals, regardless of their financial status or offices held, is enshrined in a traditional Polish saying:']
+Predicted Answer
+
+ Target Answer: regardless of their financial status 
+
+Score: 0
+Question: ['What german word does the term szlachta come from']
+Context: ['The term szlachta is derived from the Old High German word slahta (modern German Geschlecht), which means "(noble) family", much as many other Polish words pertaining to the nobility derive from German wordsâ\x80\x94e.g., the Polish "rycerz" ("knight", cognate of the German "Ritter") and the Polish "herb" ("coat of arms", from the German "Erbe", "heritage").']
+Predicted Answer
+
+ Target Answer: slahta 
+
+Score: 0
+Question: ['What does slahta mean']
+Context: ['The term szlachta is derived from the Old High German word slahta (modern German Geschlecht), which means "(noble) family", much as many other Polish words pertaining to the nobility derive from German wordsâ\x80\x94e.g., the Polish "rycerz" ("knight", cognate of the German "Ritter") and the Polish "herb" ("coat of arms", from the German "Erbe", "heritage").']
+Predicted Answer
+derived from the Old High German word slahta modern 
+ Target Answer: noble family 
+
+Score: 0
+Question: ['What is the polish name for knight']
+Context: ['The term szlachta is derived from the Old High German word slahta (modern German Geschlecht), which means "(noble) family", much as many other Polish words pertaining to the nobility derive from German wordsâ\x80\x94e.g., the Polish "rycerz" ("knight", cognate of the German "Ritter") and the Polish "herb" ("coat of arms", from the German "Erbe", "heritage").']
+Predicted Answer
+derived from 
+ Target Answer: rycerz 
+
+Score: 0
+Question: ['German name for knight']
+Context: ['The term szlachta is derived from the Old High German word slahta (modern German Geschlecht), which means "(noble) family", much as many other Polish words pertaining to the nobility derive from German wordsâ\x80\x94e.g., the Polish "rycerz" ("knight", cognate of the German "Ritter") and the Polish "herb" ("coat of arms", from the German "Erbe", "heritage").']
+Predicted Answer
+German word slahta 
+ Target Answer: Ritter 
+
+Score: 0
+Question: ['Where does the word her derive from in german']
+Context: ['The term szlachta is derived from the Old High German word slahta (modern German Geschlecht), which means "(noble) family", much as many other Polish words pertaining to the nobility derive from German wordsâ\x80\x94e.g., the Polish "rycerz" ("knight", cognate of the German "Ritter") and the Polish "herb" ("coat of arms", from the German "Erbe", "heritage").']
+Predicted Answer
+
+ Target Answer: Erbe 
+
+Score: 0
+Question: ['What did the poles of the 17th century think the term szlachta came from']
+Context: ['Poles of the 17th century assumed that "szlachta" came from the German "schlachten" ("to slaughter" or "to butcher"); also suggestive is the German "Schlacht" ("battle"). Early Polish historians thought the term may have derived from the name of the legendary proto-Polish chief, Lech, mentioned in Polish and Czech writings.']
+Predicted Answer
+writings . 
+ Target Answer: German schlachten 
+
+Score: 0.888888888888889
+Question: ['What does schlachtan mean in german']
+Context: ['Poles of the 17th century assumed that "szlachta" came from the German "schlachten" ("to slaughter" or "to butcher"); also suggestive is the German "Schlacht" ("battle"). Early Polish historians thought the term may have derived from the name of the legendary proto-Polish chief, Lech, mentioned in Polish and Czech writings.']
+Predicted Answer
+slaughter or to butcher 
+ Target Answer: to slaughter or to butcher 
+
+Score: 0
+Question: ['What German word is also suggestive deriving from  szlachta']
+Context: ['Poles of the 17th century assumed that "szlachta" came from the German "schlachten" ("to slaughter" or "to butcher"); also suggestive is the German "Schlacht" ("battle"). Early Polish historians thought the term may have derived from the name of the legendary proto-Polish chief, Lech, mentioned in Polish and Czech writings.']
+Predicted Answer
+
+ Target Answer: Schlacht 
+
+Score: 0
+Question: ['What does schlacht mean']
+Context: ['Poles of the 17th century assumed that "szlachta" came from the German "schlachten" ("to slaughter" or "to butcher"); also suggestive is the German "Schlacht" ("battle"). Early Polish historians thought the term may have derived from the name of the legendary proto-Polish chief, Lech, mentioned in Polish and Czech writings.']
+Predicted Answer
+or to butcher 
+ Target Answer: battle 
+
+Score: 0.16666666666666666
+Question: ['The polish believed szlachta derived from the name of who']
+Context: ['Poles of the 17th century assumed that "szlachta" came from the German "schlachten" ("to slaughter" or "to butcher"); also suggestive is the German "Schlacht" ("battle"). Early Polish historians thought the term may have derived from the name of the legendary proto-Polish chief, Lech, mentioned in Polish and Czech writings.']
+Predicted Answer
+in Polish and Czech writings . 
+ Target Answer: legendary proto Polish chief , Lech 
+
+Score: 0
+Question: ['What were some powerful Polish nobles referred too']
+Context: ['Some powerful Polish nobles were referred to as "magnates" (Polish singular: "magnat", plural: "magnaci") and "moÅ¼ny" ("magnate", "oligarch"; plural: "moÅ¼ni"); see Magnates of Poland and Lithuania.']
+Predicted Answer
+
+ Target Answer: magnates 
+
+Score: 0
+Question: ['What is the singular version of magnates']
+Context: ['Some powerful Polish nobles were referred to as "magnates" (Polish singular: "magnat", plural: "magnaci") and "moÅ¼ny" ("magnate", "oligarch"; plural: "moÅ¼ni"); see Magnates of Poland and Lithuania.']
+Predicted Answer
+magnaci and moÅ¼ny magnate , 
+ Target Answer: magnat 
+
+Score: 0
+Question: ['What is another name referring polish nobles']
+Context: ['Some powerful Polish nobles were referred to as "magnates" (Polish singular: "magnat", plural: "magnaci") and "moÅ¼ny" ("magnate", "oligarch"; plural: "moÅ¼ni"); see Magnates of Poland and Lithuania.']
+Predicted Answer
+
+ Target Answer: moÅ¼ny 
+
+Score: 0
+Question: ['What is the plural version of mozny']
+Context: ['Some powerful Polish nobles were referred to as "magnates" (Polish singular: "magnat", plural: "magnaci") and "moÅ¼ny" ("magnate", "oligarch"; plural: "moÅ¼ni"); see Magnates of Poland and Lithuania.']
+Predicted Answer
+
+ Target Answer: moÅ¼ni 
+
+Score: 0
+Question: ['What are two adjectives that best describe the szlachta']
+Context: ['The Polish term "szlachta" designated the formalized, hereditary noble class of Polish-Lithuanian Commonwealth. In official Latin documents of the old Commonwealth, hereditary szlachta are referred to as "nobilitas" and are indeed the equivalent in legal status of the English nobility.']
+Predicted Answer
+the equivalent in legal 
+ Target Answer: formalized , hereditary 
+
+Score: 0
+Question: ['Who is referred to as nobilitas']
+Context: ['The Polish term "szlachta" designated the formalized, hereditary noble class of Polish-Lithuanian Commonwealth. In official Latin documents of the old Commonwealth, hereditary szlachta are referred to as "nobilitas" and are indeed the equivalent in legal status of the English nobility.']
+Predicted Answer
+
+ Target Answer: hereditary szlachta 
+
+Score: 0
+Question: ['What is the legal status of nobilitas']
+Context: ['The Polish term "szlachta" designated the formalized, hereditary noble class of Polish-Lithuanian Commonwealth. In official Latin documents of the old Commonwealth, hereditary szlachta are referred to as "nobilitas" and are indeed the equivalent in legal status of the English nobility.']
+Predicted Answer
+
+ Target Answer: equivalent in legal status of the English nobility 
+
+Score: 0
+Question: ['What simple word does the term szlachta translate too']
+Context: ['Today the word szlachta in the Polish language simply translates to "nobility". In its broadest meaning, it can also denote some non-hereditary honorary knighthoods granted today by some European monarchs. Occasionally, 19th-century non-noble landowners were referred to as szlachta by courtesy or error, when they owned manorial estates though they were not noble by birth. In the narrow sense, szlachta denotes the old-Commonwealth nobility.']
+Predicted Answer
+
+ Target Answer: nobility 
+
+Score: 0
+Question: ['What were the non noble land owners referred too as']
+Context: ['Today the word szlachta in the Polish language simply translates to "nobility". In its broadest meaning, it can also denote some non-hereditary honorary knighthoods granted today by some European monarchs. Occasionally, 19th-century non-noble landowners were referred to as szlachta by courtesy or error, when they owned manorial estates though they were not noble by birth. In the narrow sense, szlachta denotes the old-Commonwealth nobility.']
+Predicted Answer
+
+ Target Answer: szlachta 
+
+Score: 0
+Question: ['Why were the non nobles and nobles referred as the same term']
+Context: ['Today the word szlachta in the Polish language simply translates to "nobility". In its broadest meaning, it can also denote some non-hereditary honorary knighthoods granted today by some European monarchs. Occasionally, 19th-century non-noble landowners were referred to as szlachta by courtesy or error, when they owned manorial estates though they were not noble by birth. In the narrow sense, szlachta denotes the old-Commonwealth nobility.']
+Predicted Answer
+
+ Target Answer: by courtesy or error 
+
+Score: 0
+Question: ['What does szlachta mainly denote']
+Context: ['Today the word szlachta in the Polish language simply translates to "nobility". In its broadest meaning, it can also denote some non-hereditary honorary knighthoods granted today by some European monarchs. Occasionally, 19th-century non-noble landowners were referred to as szlachta by courtesy or error, when they owned manorial estates though they were not noble by birth. In the narrow sense, szlachta denotes the old-Commonwealth nobility.']
+Predicted Answer
+language simply 
+ Target Answer: old Commonwealth nobility 
+
+Score: 0.2666666666666667
+Question: ['Why did the mistranslation of szlachta come about']
+Context: ['In the past, a certain misconception sometimes led to the mistranslation of "szlachta" as "gentry" rather than "nobility".:206 :xvi This mistaken practice began due to the economic status of some szlachta members being inferior to that of the nobility in other European countries (see also Estates of the Realm regarding wealth and nobility). The szlachta included those almost rich and powerful enough to be magnates down to rascals with a noble lineage, no land, no castle, no money, no village, and no peasants.:xvi']
+Predicted Answer
+included those 
+ Target Answer: included those almost rich and powerful enough to be magnates down to rascals 
+
+Score: 0.04545454545454545
+Question: ['Who was inferior of the other, European countries or szlachta']
+Context: ['In the past, a certain misconception sometimes led to the mistranslation of "szlachta" as "gentry" rather than "nobility".:206 :xvi This mistaken practice began due to the economic status of some szlachta members being inferior to that of the nobility in other European countries (see also Estates of the Realm regarding wealth and nobility). The szlachta included those almost rich and powerful enough to be magnates down to rascals with a noble lineage, no land, no castle, no money, no village, and no peasants.:xvi']
+Predicted Answer
+Realm regarding wealth and nobility . The szlachta included those almost rich and powerful enough to be magnates down to rascals with a noble lineage , no land , no castle , no money , no village , and no peasants . xvi 
+ Target Answer: szlachta 
+
+Score: 0
+Question: ['What ultimately determined nobility']
+Context: ['As some szlachta were poorer than some non-noble gentry, some particularly impoverished szlachta were forced to become tenants of the wealthier gentry. In doing so, however, these szlachta retained all their constitutional prerogatives, as it was not wealth or lifestyle (obtainable by the gentry), but hereditary juridical status, that determined nobility.']
+Predicted Answer
+
+ Target Answer: hereditary juridical status 
+
+Score: 0
+Question: ['What were some impoverished szlachta forced to do']
+Context: ['As some szlachta were poorer than some non-noble gentry, some particularly impoverished szlachta were forced to become tenants of the wealthier gentry. In doing so, however, these szlachta retained all their constitutional prerogatives, as it was not wealth or lifestyle (obtainable by the gentry), but hereditary juridical status, that determined nobility.']
+Predicted Answer
+
+ Target Answer: to become tenants of the wealthier gentry . 
+
+Score: 0
+Question: ['What was one noble thing the poor szlachta did']
+Context: ['As some szlachta were poorer than some non-noble gentry, some particularly impoverished szlachta were forced to become tenants of the wealthier gentry. In doing so, however, these szlachta retained all their constitutional prerogatives, as it was not wealth or lifestyle (obtainable by the gentry), but hereditary juridical status, that determined nobility.']
+Predicted Answer
+
+ Target Answer: retained all their constitutional prerogatives 
+
+Score: 0
+Question: ['Have the origins of the szlachta been clear or obscure']
+Context: ['The origins of the szlachta, while ancient, have always been considered obscure.:207 As a result, its members often referred to it as odwieczna (perennial).:207 Two popular historic theories of origin forwarded by its members and earlier historians and chroniclers involved descent from the ancient Iranian tribes known as Sarmatians or from Japheth, one of Noah sons (by contrast, the peasantry were said to be the offspring of another son of Noah, Hamâ\x80\x94and hence subject to bondage under the Curse of Hamâ\x80\x94and the Jews as the offspring of Shem). Other fanciful theories included its foundation by Julius Caesar, Alexander the Great:207 or regional leaders who had not mixed their bloodlines with those of laves, prisoners, and aliens.:208']
+Predicted Answer
+
+ Target Answer: obscure 
+
+Score: 0
+Question: ['What did they use to refer to the origin of szlactha']
+Context: ['The origins of the szlachta, while ancient, have always been considered obscure.:207 As a result, its members often referred to it as odwieczna (perennial).:207 Two popular historic theories of origin forwarded by its members and earlier historians and chroniclers involved descent from the ancient Iranian tribes known as Sarmatians or from Japheth, one of Noah sons (by contrast, the peasantry were said to be the offspring of another son of Noah, Hamâ\x80\x94and hence subject to bondage under the Curse of Hamâ\x80\x94and the Jews as the offspring of Shem). Other fanciful theories included its foundation by Julius Caesar, Alexander the Great:207 or regional leaders who had not mixed their bloodlines with those of laves, prisoners, and aliens.:208']
+Predicted Answer
+from the 
+ Target Answer: odwieczna 
+
+Score: 0.3636363636363636
+Question: ['What was one historic theory of the szlachta origins']
+Context: ['The origins of the szlachta, while ancient, have always been considered obscure.:207 As a result, its members often referred to it as odwieczna (perennial).:207 Two popular historic theories of origin forwarded by its members and earlier historians and chroniclers involved descent from the ancient Iranian tribes known as Sarmatians or from Japheth, one of Noah sons (by contrast, the peasantry were said to be the offspring of another son of Noah, Hamâ\x80\x94and hence subject to bondage under the Curse of Hamâ\x80\x94and the Jews as the offspring of Shem). Other fanciful theories included its foundation by Julius Caesar, Alexander the Great:207 or regional leaders who had not mixed their bloodlines with those of laves, prisoners, and aliens.:208']
+Predicted Answer
+from the 
+ Target Answer: descent from the ancient Iranian tribes known as Sarmatians 
+
+Score: 0
+Question: ['What was another regional leader involved in the origins of szlachta']
+Context: ['The origins of the szlachta, while ancient, have always been considered obscure.:207 As a result, its members often referred to it as odwieczna (perennial).:207 Two popular historic theories of origin forwarded by its members and earlier historians and chroniclers involved descent from the ancient Iranian tribes known as Sarmatians or from Japheth, one of Noah sons (by contrast, the peasantry were said to be the offspring of another son of Noah, Hamâ\x80\x94and hence subject to bondage under the Curse of Hamâ\x80\x94and the Jews as the offspring of Shem). Other fanciful theories included its foundation by Julius Caesar, Alexander the Great:207 or regional leaders who had not mixed their bloodlines with those of laves, prisoners, and aliens.:208']
+Predicted Answer
+
+ Target Answer: Alexander the Great 
+
+Score: 0.125
+Question: ['What was important and unique about regional leaders']
+Context: ['The origins of the szlachta, while ancient, have always been considered obscure.:207 As a result, its members often referred to it as odwieczna (perennial).:207 Two popular historic theories of origin forwarded by its members and earlier historians and chroniclers involved descent from the ancient Iranian tribes known as Sarmatians or from Japheth, one of Noah sons (by contrast, the peasantry were said to be the offspring of another son of Noah, Hamâ\x80\x94and hence subject to bondage under the Curse of Hamâ\x80\x94and the Jews as the offspring of Shem). Other fanciful theories included its foundation by Julius Caesar, Alexander the Great:207 or regional leaders who had not mixed their bloodlines with those of laves, prisoners, and aliens.:208']
+Predicted Answer
+As a result , its members often referred to it as odwieczna perennial . 207 Two popular historic theories of origin forwarded by its members and earlier historians and chroniclers involved descent from the 
+ Target Answer: had not mixed their bloodlines with those of laves , prisoners , and aliens 
+
+Score: 0
+Question: ['WHat was the name of the distinct element from a nnon-Slavic warrior class']
+Context: ['Another theory describes its derivation from a non-Slavic warrior class,:42, 64â\x80\x9366 forming a distinct element known as the Lechici/Lekhi (LechitÃ³w):430 :482 within the ancient Polonic tribal groupings (Indo-European caste systems). This hypothesis states this upper class was not of Slavonic extraction:482 and was of a different origin than the Slavonic peasants (kmiecie; Latin: cmethones):430 :118 over which they ruled.:482 The Szlachta were differentiated from the rural population. The nobleman sense of distinction led to practices that in later periods would be characterized as racism.:233 The Szlachta were noble in the Aryan sense -- "noble" in contrast to the people over whom they ruled after coming into contact with them.:482 The szlachta traced their descent from Lech/Lekh, who probably founded the Polish kingdom in about the fifth century.:482 Lechia was the name of Poland in antiquity, and the szlachta own name for themselves was Lechici/Lekhi.:482 An exact counterpart of Szlachta society was the Meerassee system of tenure of southern Indiaâ\x80\x94an aristocracy of equalityâ\x80\x94settled as conquerors among a separate race.:484 The Polish state paralleled the Roman Empire in that full rights of citizenship were limited to the szlachta. The szlachta were a caste, a military caste, as in Hindu society.']
+Predicted Answer
+
+ Target Answer: Lechici Lekhi LechitÃ³w 
+
+Score: 0
+Question: ['In this theory, what was the upper class']
+Context: ['Another theory describes its derivation from a non-Slavic warrior class,:42, 64â\x80\x9366 forming a distinct element known as the Lechici/Lekhi (LechitÃ³w):430 :482 within the ancient Polonic tribal groupings (Indo-European caste systems). This hypothesis states this upper class was not of Slavonic extraction:482 and was of a different origin than the Slavonic peasants (kmiecie; Latin: cmethones):430 :118 over which they ruled.:482 The Szlachta were differentiated from the rural population. The nobleman sense of distinction led to practices that in later periods would be characterized as racism.:233 The Szlachta were noble in the Aryan sense -- "noble" in contrast to the people over whom they ruled after coming into contact with them.:482 The szlachta traced their descent from Lech/Lekh, who probably founded the Polish kingdom in about the fifth century.:482 Lechia was the name of Poland in antiquity, and the szlachta own name for themselves was Lechici/Lekhi.:482 An exact counterpart of Szlachta society was the Meerassee system of tenure of southern Indiaâ\x80\x94an aristocracy of equalityâ\x80\x94settled as conquerors among a separate race.:484 The Polish state paralleled the Roman Empire in that full rights of citizenship were limited to the szlachta. The szlachta were a caste, a military caste, as in Hindu society.']
+Predicted Answer
+
+ Target Answer: was of a different origin than the Slavonic peasants 
+
+Score: 0
+Question: ['WHen did they find the polish kingdom']
+Context: ['Another theory describes its derivation from a non-Slavic warrior class,:42, 64â\x80\x9366 forming a distinct element known as the Lechici/Lekhi (LechitÃ³w):430 :482 within the ancient Polonic tribal groupings (Indo-European caste systems). This hypothesis states this upper class was not of Slavonic extraction:482 and was of a different origin than the Slavonic peasants (kmiecie; Latin: cmethones):430 :118 over which they ruled.:482 The Szlachta were differentiated from the rural population. The nobleman sense of distinction led to practices that in later periods would be characterized as racism.:233 The Szlachta were noble in the Aryan sense -- "noble" in contrast to the people over whom they ruled after coming into contact with them.:482 The szlachta traced their descent from Lech/Lekh, who probably founded the Polish kingdom in about the fifth century.:482 Lechia was the name of Poland in antiquity, and the szlachta own name for themselves was Lechici/Lekhi.:482 An exact counterpart of Szlachta society was the Meerassee system of tenure of southern Indiaâ\x80\x94an aristocracy of equalityâ\x80\x94settled as conquerors among a separate race.:484 The Polish state paralleled the Roman Empire in that full rights of citizenship were limited to the szlachta. The szlachta were a caste, a military caste, as in Hindu society.']
+Predicted Answer
+
+ Target Answer: about the fifth century . 
+
+Score: 0
+Question: ['WHat caste system does the hindu society have']
+Context: ['Another theory describes its derivation from a non-Slavic warrior class,:42, 64â\x80\x9366 forming a distinct element known as the Lechici/Lekhi (LechitÃ³w):430 :482 within the ancient Polonic tribal groupings (Indo-European caste systems). This hypothesis states this upper class was not of Slavonic extraction:482 and was of a different origin than the Slavonic peasants (kmiecie; Latin: cmethones):430 :118 over which they ruled.:482 The Szlachta were differentiated from the rural population. The nobleman sense of distinction led to practices that in later periods would be characterized as racism.:233 The Szlachta were noble in the Aryan sense -- "noble" in contrast to the people over whom they ruled after coming into contact with them.:482 The szlachta traced their descent from Lech/Lekh, who probably founded the Polish kingdom in about the fifth century.:482 Lechia was the name of Poland in antiquity, and the szlachta own name for themselves was Lechici/Lekhi.:482 An exact counterpart of Szlachta society was the Meerassee system of tenure of southern Indiaâ\x80\x94an aristocracy of equalityâ\x80\x94settled as conquerors among a separate race.:484 The Polish state paralleled the Roman Empire in that full rights of citizenship were limited to the szlachta. The szlachta were a caste, a military caste, as in Hindu society.']
+Predicted Answer
+its derivation from a non Slavic 
+ Target Answer: military caste 
+
+Score: 0
+Question: ['Who shares the same caste system as Hindu']
+Context: ['Another theory describes its derivation from a non-Slavic warrior class,:42, 64â\x80\x9366 forming a distinct element known as the Lechici/Lekhi (LechitÃ³w):430 :482 within the ancient Polonic tribal groupings (Indo-European caste systems). This hypothesis states this upper class was not of Slavonic extraction:482 and was of a different origin than the Slavonic peasants (kmiecie; Latin: cmethones):430 :118 over which they ruled.:482 The Szlachta were differentiated from the rural population. The nobleman sense of distinction led to practices that in later periods would be characterized as racism.:233 The Szlachta were noble in the Aryan sense -- "noble" in contrast to the people over whom they ruled after coming into contact with them.:482 The szlachta traced their descent from Lech/Lekh, who probably founded the Polish kingdom in about the fifth century.:482 Lechia was the name of Poland in antiquity, and the szlachta own name for themselves was Lechici/Lekhi.:482 An exact counterpart of Szlachta society was the Meerassee system of tenure of southern Indiaâ\x80\x94an aristocracy of equalityâ\x80\x94settled as conquerors among a separate race.:484 The Polish state paralleled the Roman Empire in that full rights of citizenship were limited to the szlachta. The szlachta were a caste, a military caste, as in Hindu society.']
+Predicted Answer
+
+ Target Answer: The szlachta 
+
+Score: 0
+Question: ['The polish anem and cry ritualized what']
+Context: ['The documentation regarding Raciborz and Albert tenure is the earliest surviving of the use of the clan name and cry defining the honorable status of Polish knights. The names of knightly genealogiae only came to be associated with heraldic devices later in the Middle Ages and in the early modern period. The Polish clan name and cry ritualized the ius militare, i.e., the power to command an army; and they had been used some time before 1244 to define knightly status. (GÃ³recki 1992, pp. 183â\x80\x93185).']
+Predicted Answer
+and cry defining 
+ Target Answer: the ius militare , 
+
+Score: 0.375
+Question: ['In 1244 the power to command and army had been used to do what']
+Context: ['The documentation regarding Raciborz and Albert tenure is the earliest surviving of the use of the clan name and cry defining the honorable status of Polish knights. The names of knightly genealogiae only came to be associated with heraldic devices later in the Middle Ages and in the early modern period. The Polish clan name and cry ritualized the ius militare, i.e., the power to command an army; and they had been used some time before 1244 to define knightly status. (GÃ³recki 1992, pp. 183â\x80\x93185).']
+Predicted Answer
+to define knightly status . GÃ³recki 1992 , pp . 183â 185 . 
+ Target Answer: define knightly status 
+
+Score: 0.8571428571428571
+Question: ['Around what time were the knights and szlachta very similiar']
+Context: ['Around the 14th century, there was little difference between knights and the szlachta in Poland. Members of the szlachta had the personal obligation to defend the country (pospolite ruszenie), thereby becoming the kingdom most privileged social class. Inclusion in the class was almost exclusively based on inheritance.']
+Predicted Answer
+the 14th century 
+ Target Answer: Around the 14th century 
+
+Score: 0
+Question: ['What was a personal obligation of the szlachtas']
+Context: ['Around the 14th century, there was little difference between knights and the szlachta in Poland. Members of the szlachta had the personal obligation to defend the country (pospolite ruszenie), thereby becoming the kingdom most privileged social class. Inclusion in the class was almost exclusively based on inheritance.']
+Predicted Answer
+
+ Target Answer: defend the country 
+
+Score: 0
+Question: ['What contributed to the long standing traditions']
+Context: ['Concerning the early Polish tribes, geography contributed to long-standing traditions. The Polish tribes were internalized and organized around a unifying religious cult, governed by the wiec, an assembly of free tribesmen. Later, when safety required power to be consolidated, an elected prince was chosen to govern. The election privilege was usually limited to elites.']
+Predicted Answer
+
+ Target Answer: geography 
+
+Score: 0
+Question: ['What was governing the polish tribes']
+Context: ['Concerning the early Polish tribes, geography contributed to long-standing traditions. The Polish tribes were internalized and organized around a unifying religious cult, governed by the wiec, an assembly of free tribesmen. Later, when safety required power to be consolidated, an elected prince was chosen to govern. The election privilege was usually limited to elites.']
+Predicted Answer
+
+ Target Answer: wiec 
+
+Score: 0
+Question: ['What was the wiec']
+Context: ['Concerning the early Polish tribes, geography contributed to long-standing traditions. The Polish tribes were internalized and organized around a unifying religious cult, governed by the wiec, an assembly of free tribesmen. Later, when safety required power to be consolidated, an elected prince was chosen to govern. The election privilege was usually limited to elites.']
+Predicted Answer
+unifying religious cult , governed by the wiec 
+ Target Answer: an assembly of free tribesmen 
+
+Score: 0.14285714285714288
+Question: ['When power needed to be consolidated what was chosen to govern']
+Context: ['Concerning the early Polish tribes, geography contributed to long-standing traditions. The Polish tribes were internalized and organized around a unifying religious cult, governed by the wiec, an assembly of free tribesmen. Later, when safety required power to be consolidated, an elected prince was chosen to govern. The election privilege was usually limited to elites.']
+Predicted Answer
+, governed by the wiec , an assembly of free tribesmen . Later , when safety required power to be consolidated , an elected prince was chosen to govern . The election privilege was usually limited to elites . 
+ Target Answer: an elected prince 
+
+Score: 0
+Question: ['What was the governing position limited to']
+Context: ['Concerning the early Polish tribes, geography contributed to long-standing traditions. The Polish tribes were internalized and organized around a unifying religious cult, governed by the wiec, an assembly of free tribesmen. Later, when safety required power to be consolidated, an elected prince was chosen to govern. The election privilege was usually limited to elites.']
+Predicted Answer
+
+ Target Answer: elites 
+
+Score: 0
+Question: ['What ruled over the tribes']
+Context: ['The tribes were ruled by clans (rÃ³d) consisting of people related by blood or marriage and theoretically descending from a common ancestor, giving the rÃ³d/clan a highly developed sense of solidarity. (See gens.) The starosta (or starszyna) had judicial and military power over the rÃ³d/clan, although this power was often exercised with an assembly of elders. Strongholds called grÏ\x8cd were built where the religious cult was powerful, where trials were conducted, and where clans gathered in the face of danger. The opole was the territory occupied by a single tribe. (Manteuffel 1982, p. 44)']
+Predicted Answer
+or starszyna had 
+ Target Answer: clans rÃ³d 
+
+Score: 0
+Question: ['What did the clans people all have in common']
+Context: ['The tribes were ruled by clans (rÃ³d) consisting of people related by blood or marriage and theoretically descending from a common ancestor, giving the rÃ³d/clan a highly developed sense of solidarity. (See gens.) The starosta (or starszyna) had judicial and military power over the rÃ³d/clan, although this power was often exercised with an assembly of elders. Strongholds called grÏ\x8cd were built where the religious cult was powerful, where trials were conducted, and where clans gathered in the face of danger. The opole was the territory occupied by a single tribe. (Manteuffel 1982, p. 44)']
+Predicted Answer
+
+ Target Answer: theoretically descending from a common ancestor 
+
+Score: 0
+Question: ['What gave them a sense of solidarity?']
+Context: ['The tribes were ruled by clans (rÃ³d) consisting of people related by blood or marriage and theoretically descending from a common ancestor, giving the rÃ³d/clan a highly developed sense of solidarity. (See gens.) The starosta (or starszyna) had judicial and military power over the rÃ³d/clan, although this power was often exercised with an assembly of elders. Strongholds called grÏ\x8cd were built where the religious cult was powerful, where trials were conducted, and where clans gathered in the face of danger. The opole was the territory occupied by a single tribe. (Manteuffel 1982, p. 44)']
+Predicted Answer
+
+ Target Answer: related by blood or marriage 
+
+Score: 0
+Question: ['What were stronghold called']
+Context: ['The tribes were ruled by clans (rÃ³d) consisting of people related by blood or marriage and theoretically descending from a common ancestor, giving the rÃ³d/clan a highly developed sense of solidarity. (See gens.) The starosta (or starszyna) had judicial and military power over the rÃ³d/clan, although this power was often exercised with an assembly of elders. Strongholds called grÏ\x8cd were built where the religious cult was powerful, where trials were conducted, and where clans gathered in the face of danger. The opole was the territory occupied by a single tribe. (Manteuffel 1982, p. 44)']
+Predicted Answer
+where trials were conducted , and where clans gathered in 
+ Target Answer: grÏ d 
+
+Score: 0
+Question: ['What was the territory occupied by a single tribe']
+Context: ['The tribes were ruled by clans (rÃ³d) consisting of people related by blood or marriage and theoretically descending from a common ancestor, giving the rÃ³d/clan a highly developed sense of solidarity. (See gens.) The starosta (or starszyna) had judicial and military power over the rÃ³d/clan, although this power was often exercised with an assembly of elders. Strongholds called grÏ\x8cd were built where the religious cult was powerful, where trials were conducted, and where clans gathered in the face of danger. The opole was the territory occupied by a single tribe. (Manteuffel 1982, p. 44)']
+Predicted Answer
+rÃ³d clan 
+ Target Answer: opole 
+
+Score: 0
+Question: ['WHo established an elite knightly retinue']
+Context: ['Mieszko I of Poland (c. 935 â\x80\x93 25 May 992) established an elite knightly retinue from within his army, which he depended upon for success in uniting the Lekhitic tribes and preserving the unity of his state. Documented proof exists of Mieszko I successors utilizing such a retinue, as well.']
+Predicted Answer
+
+ Target Answer: Mieszko I of Poland 
+
+Score: 0
+Question: ['Along with uniting the lekhitic tribes what did poland succeed in']
+Context: ['Mieszko I of Poland (c. 935 â\x80\x93 25 May 992) established an elite knightly retinue from within his army, which he depended upon for success in uniting the Lekhitic tribes and preserving the unity of his state. Documented proof exists of Mieszko I successors utilizing such a retinue, as well.']
+Predicted Answer
+
+ Target Answer: preserving the unity of his state 
+
+Score: 0
+Question: ['Who also established this retinue as well']
+Context: ['Mieszko I of Poland (c. 935 â\x80\x93 25 May 992) established an elite knightly retinue from within his army, which he depended upon for success in uniting the Lekhitic tribes and preserving the unity of his state. Documented proof exists of Mieszko I successors utilizing such a retinue, as well.']
+Predicted Answer
+
+ Target Answer: Mieszko I successors 
+
+Score: 0
+Question: ['WHat was a polish nobleman referred to as before the 15th century']
+Context: ['Another class of knights were granted land by the prince, allowing them the economic ability to serve the prince militarily. A Polish nobleman living at the time prior to the 15th century was referred to as a "rycerz", very roughly equivalent to the English "knight," the critical difference being the status of "rycerz" was almost strictly hereditary; the class of all such individuals was known as the "rycerstwo". Representing the wealthier families of Poland and itinerant knights from abroad seeking their fortunes, this other class of rycerstwo, which became the szlachta/nobility ("szlachta" becomes the proper term for Polish nobility beginning about the 15th century), gradually formed apart from Mieszko I and his successors elite retinues. This rycerstwo/nobility obtained more privileges granting them favored status. They were absolved from particular burdens and obligations under ducal law, resulting in the belief only rycerstwo (those combining military prowess with high/noble birth) could serve as officials in state administration.']
+Predicted Answer
+
+ Target Answer: rycerz 
+
+Score: 0
+Question: ['What is roughly the same to the english version of rycerz']
+Context: ['Another class of knights were granted land by the prince, allowing them the economic ability to serve the prince militarily. A Polish nobleman living at the time prior to the 15th century was referred to as a "rycerz", very roughly equivalent to the English "knight," the critical difference being the status of "rycerz" was almost strictly hereditary; the class of all such individuals was known as the "rycerstwo". Representing the wealthier families of Poland and itinerant knights from abroad seeking their fortunes, this other class of rycerstwo, which became the szlachta/nobility ("szlachta" becomes the proper term for Polish nobility beginning about the 15th century), gradually formed apart from Mieszko I and his successors elite retinues. This rycerstwo/nobility obtained more privileges granting them favored status. They were absolved from particular burdens and obligations under ducal law, resulting in the belief only rycerstwo (those combining military prowess with high/noble birth) could serve as officials in state administration.']
+Predicted Answer
+
+ Target Answer: knight 
+
+Score: 0
+Question: ['What people did the rycerstwo class represent']
+Context: ['Another class of knights were granted land by the prince, allowing them the economic ability to serve the prince militarily. A Polish nobleman living at the time prior to the 15th century was referred to as a "rycerz", very roughly equivalent to the English "knight," the critical difference being the status of "rycerz" was almost strictly hereditary; the class of all such individuals was known as the "rycerstwo". Representing the wealthier families of Poland and itinerant knights from abroad seeking their fortunes, this other class of rycerstwo, which became the szlachta/nobility ("szlachta" becomes the proper term for Polish nobility beginning about the 15th century), gradually formed apart from Mieszko I and his successors elite retinues. This rycerstwo/nobility obtained more privileges granting them favored status. They were absolved from particular burdens and obligations under ducal law, resulting in the belief only rycerstwo (those combining military prowess with high/noble birth) could serve as officials in state administration.']
+Predicted Answer
+
+ Target Answer: wealthier families of Poland and itinerant knights from abroad seeking their fortunes 
+
+Score: 0
+Question: ['What positive did the szlachta class receive']
+Context: ['Another class of knights were granted land by the prince, allowing them the economic ability to serve the prince militarily. A Polish nobleman living at the time prior to the 15th century was referred to as a "rycerz", very roughly equivalent to the English "knight," the critical difference being the status of "rycerz" was almost strictly hereditary; the class of all such individuals was known as the "rycerstwo". Representing the wealthier families of Poland and itinerant knights from abroad seeking their fortunes, this other class of rycerstwo, which became the szlachta/nobility ("szlachta" becomes the proper term for Polish nobility beginning about the 15th century), gradually formed apart from Mieszko I and his successors elite retinues. This rycerstwo/nobility obtained more privileges granting them favored status. They were absolved from particular burdens and obligations under ducal law, resulting in the belief only rycerstwo (those combining military prowess with high/noble birth) could serve as officials in state administration.']
+Predicted Answer
+the economic ability to serve the prince 
+ Target Answer: gradually formed apart from Mieszko I and his successors elite retinues . 
+
+Score: 0
+Question: ['What did ducal law implement for the rycerstwo/nobility']
+Context: ['Another class of knights were granted land by the prince, allowing them the economic ability to serve the prince militarily. A Polish nobleman living at the time prior to the 15th century was referred to as a "rycerz", very roughly equivalent to the English "knight," the critical difference being the status of "rycerz" was almost strictly hereditary; the class of all such individuals was known as the "rycerstwo". Representing the wealthier families of Poland and itinerant knights from abroad seeking their fortunes, this other class of rycerstwo, which became the szlachta/nobility ("szlachta" becomes the proper term for Polish nobility beginning about the 15th century), gradually formed apart from Mieszko I and his successors elite retinues. This rycerstwo/nobility obtained more privileges granting them favored status. They were absolved from particular burdens and obligations under ducal law, resulting in the belief only rycerstwo (those combining military prowess with high/noble birth) could serve as officials in state administration.']
+Predicted Answer
+
+ Target Answer: could serve as officials in state administration . 
+
+Score: 0
+Question: ['WHen was the period of Division']
+Context: ['The Period of Division from, A.D., 1138 â\x80\x93 A.D., 1314, which included nearly 200 years of feudal fragmentation and which stemmed from BolesÅ\x82aw III division of Poland among his sons, was the genesis of the social structure which saw the economic elevation of the great landowning feudal nobles (moÅ¼ni/Magnates, both ecclesiastical and lay) from the rycerstwo they originated from. The prior social structure was one of Polish tribes united into the historic Polish nation under a state ruled by the Piast dynasty, this dynasty appearing circa 850 A.D.']
+Predicted Answer
+
+ Target Answer: A . D . , 1138 â A . D . , 1314 
+
+Score: 0
+Question: ['What stemmed the period of division']
+Context: ['The Period of Division from, A.D., 1138 â\x80\x93 A.D., 1314, which included nearly 200 years of feudal fragmentation and which stemmed from BolesÅ\x82aw III division of Poland among his sons, was the genesis of the social structure which saw the economic elevation of the great landowning feudal nobles (moÅ¼ni/Magnates, both ecclesiastical and lay) from the rycerstwo they originated from. The prior social structure was one of Polish tribes united into the historic Polish nation under a state ruled by the Piast dynasty, this dynasty appearing circa 850 A.D.']
+Predicted Answer
+
+ Target Answer: BolesÅ aw III division of Poland among his sons 
+
+Score: 0
+Question: ['What tribe was the prior social structure from']
+Context: ['The Period of Division from, A.D., 1138 â\x80\x93 A.D., 1314, which included nearly 200 years of feudal fragmentation and which stemmed from BolesÅ\x82aw III division of Poland among his sons, was the genesis of the social structure which saw the economic elevation of the great landowning feudal nobles (moÅ¼ni/Magnates, both ecclesiastical and lay) from the rycerstwo they originated from. The prior social structure was one of Polish tribes united into the historic Polish nation under a state ruled by the Piast dynasty, this dynasty appearing circa 850 A.D.']
+Predicted Answer
+Magnates , both 
+ Target Answer: Polish 
+
+Score: 1.0
+Question: ['What other rights were equal to orthodox nobles']
+Context: ['The Orthodox nobles rights were nominally equal to those enjoyed by Polish and Lithuanian nobility, but there was a cultural pressure to convert to Catholicism, that was greatly eased in 1596 by the Union of Brest. See for example careers of Senator Adam Kisiel and Jerzy Franciszek Kulczycki.']
+Predicted Answer
+Polish and Lithuanian nobility 
+ Target Answer: Polish and Lithuanian nobility 
+
+Score: 0.7499999999999999
+Question: ['What greatly eased the cultural pressure towards Catholicism.']
+Context: ['The Orthodox nobles rights were nominally equal to those enjoyed by Polish and Lithuanian nobility, but there was a cultural pressure to convert to Catholicism, that was greatly eased in 1596 by the Union of Brest. See for example careers of Senator Adam Kisiel and Jerzy Franciszek Kulczycki.']
+Predicted Answer
+the Union of Brest . 
+ Target Answer: Union of Brest 
+
+Score: 1.0
+Question: ['What was the toalt number of legal ennoblements thoughout history of poland and polish commonwealt']
+Context: ['According to heraldic sources 1,600 is a total estimated number of all legal ennoblements throughout the history of Kingdom of Poland and Polish-Lithuanian Commonwealth from the 14th century onward (half of which were performed in the final years of the late 18th century).']
+Predicted Answer
+1 , 600 
+ Target Answer: 1 , 600 
+
+Score: 1.0
+Question: ['When did theys tart recording the ennoblements']
+Context: ['According to heraldic sources 1,600 is a total estimated number of all legal ennoblements throughout the history of Kingdom of Poland and Polish-Lithuanian Commonwealth from the 14th century onward (half of which were performed in the final years of the late 18th century).']
+Predicted Answer
+14th century onward 
+ Target Answer: 14th century onward 
+
+Score: 0.8888888888888888
+Question: ['When did kings grant privileges to the nobles']
+Context: ['Poland successive kings granted privileges to the nobility at the time of their election to the throne (the privileges being specified in the king-elect Pacta conventa) and at other times in exchange for ad hoc permission to raise an extraordinary tax or a pospolite ruszenie.']
+Predicted Answer
+the nobility at the time of their election to 
+ Target Answer: at the time of their election to the throne 
