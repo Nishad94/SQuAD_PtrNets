@@ -114,8 +114,8 @@ class BasicS2S(nn.Module):
 
 
 
-        embedded_para = getContextBertEmbeddings(inputs_text[0])
-        embedded_ques = getContextBertEmbeddings(questions_text[0])
+        embedded_para = getContextBertEmbeddings(inputs_text[0]).unsqueeze(1)
+        embedded_ques = getContextBertEmbeddings(questions_text[0]).unsqueeze(1)
 
         
         # ques_len * 1 * hidden, _
