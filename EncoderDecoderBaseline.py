@@ -14,7 +14,7 @@ from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM
 modelBERT = BertModel.from_pretrained('bert-base-uncased')
 if USE_CUDA:
     modelBERT.cuda()
-modelBERT.eval()
+#modelBERT.eval()
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 
