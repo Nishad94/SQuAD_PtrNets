@@ -52,8 +52,8 @@ if params.gpu and torch.cuda.is_available():
 else:
     USE_CUDA = False
 
-model = PointerNet(len(word2idx), params.embedding_size,
-                   params.hiddens,
+model = PointerNet(len(word2idx), 768,
+                   512,
                    params.nof_lstms,
                    params.dropout,
                    params.bidir)
