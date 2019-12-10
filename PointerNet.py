@@ -57,26 +57,6 @@ class Encoder(nn.Module):
 
         return outputs.permute(1, 0, 2), hidden
 
-    def init_hidden(self, embedded_inputs):
-        """
-        Initiate hidden units
-
-        :param Tensor embedded_inputs: The embedded input of Pointer-NEt
-        :return: Initiated hidden units for the LSTMs (h, c)
-        """
-
-        batch_size = embedded_inputs.size(0)
-
-        # Reshaping (Expanding)
-        h0 = self.h0.unsqueeze(0).unsqueeze(0).repeat(self.n_layers,
-                                                      batch_size,
-                                                      self.hidden_dim)
-        c0 = self.h0.unsqueeze(0).unsqueeze(0).repeat(self.n_layers,
-                                                      batch_size,
-                                                      self.hidden_dim)
-
-        return h0, c0
-
 
 class Attention(nn.Module):
     """
@@ -170,14 +150,14 @@ class Decoder(nn.Module):
         self.runner = Parameter(torch.zeros(1), requires_grad=False)
 
     def forward(self, embedded_inputs,
-                decoder_input,
+                decoder_input_init,
                 hidden,
                 context):
         """
         Decoder - Forward-pass
 
         :param Tensor embedded_inputs: Embedded inputs of questions
-        :param Tensor decoder_input: First decoder's input
+        :param Tensor decoder_input_init: First decoder's input
         :param Tensor hidden: First decoder's hidden states
         :param Tensor context: Encoder's outputs
         :return: (Output probabilities, Pointers indices), last hidden state
@@ -228,6 +208,7 @@ class Decoder(nn.Module):
 
             return hidden_t, c_t, output
 
+        decoder_input = decoder_input_init
         # Recurrence loop
         for _ in range(2):
             h_t, c_t, outs = step(decoder_input, hidden)
@@ -262,7 +243,7 @@ class PointerNet(nn.Module):
     Pointer-Net
     """
 
-    def __init__(self, embedding_dim,
+    def __init__(self, vocab_sz, embedding_dim,
                  hidden_dim,
                  lstm_layers,
                  dropout,
@@ -280,15 +261,15 @@ class PointerNet(nn.Module):
         super(PointerNet, self).__init__()
         self.embedding_dim = embedding_dim
         self.bidir = bidir
-        self.embedding = nn.Linear(1, embedding_dim)
+        self.embedding = nn.Embedding(vocab_sz, embedding_dim)
         self.para_encoder = Encoder(embedding_dim,
                                hidden_dim,
                                lstm_layers,
                                dropout,
                                bidir)
         self.question_encoder = Encoder(embedding_dim, hidden_dim, lstm_layers, dropout, bidir)
-        self.quest_linear = nn.Linear(hidden_dim, embedding_dim)
-        self.decoder = Decoder(embedding_dim, hidden_dim)
+        self.downsize_linear = nn.Linear(2*hidden_dim, hidden_dim)
+        self.decoder = Decoder(hidden_dim, hidden_dim)
 
     def forward(self, inputs, questions):
         """
@@ -311,12 +292,12 @@ class PointerNet(nn.Module):
         embedded_inputs = self.embedding(inputs).view(batch_size, input_length, -1)
         quest_embedded_inputs = self.embedding(quest_inputs).view(batch_size, quest_length, -1)
 
-        encoder_hidden0 = self.para_encoder.init_hidden(embedded_inputs)
-        encoder_outputs, encoder_hidden = self.para_encoder(embedded_inputs,
-                                                       encoder_hidden0)
+        # batch_sz * q_len * n_dirs*hidden_sz, n_dir*n_layers * batch_sz * hidden_sz 
+        quest_encoder_outputs, quest_encoder_hidden = self.question_encoder(quest_embedded_inputs, None)
 
-        quest_encoder_hidden0 = self.question_encoder.init_hidden(quest_embedded_inputs)
-        quest_encoder_outputs, quest_encoder_hidden = self.question_encoder(quest_embedded_inputs, quest_encoder_hidden0)
+        # batch_sz * para_len * n_dirs*hidden_sz, n_dir*n_layers * batch_sz * hidden_sz 
+        encoder_outputs, encoder_hidden = self.para_encoder(embedded_inputs,
+                                                       quest_encoder_hidden)
 
         if self.bidir:
             decoder_hidden0 = (torch.cat([_ for _ in encoder_hidden[0][-2:]], dim=-1),
@@ -325,16 +306,29 @@ class PointerNet(nn.Module):
             quest_decoder_hidden0 = (torch.cat([_ for _ in quest_encoder_hidden[0][-2:]], dim=-1),
                                torch.cat([_ for _ in quest_encoder_hidden[1][-2:]], dim=-1))
         else:
-            decoder_hidden0 = (encoder_hidden[0][-1],
-                               encoder_hidden[1][-1])
+            decoder_hidden0 = (torch.cat((encoder_hidden[0][-1],quest_encoder_hidden[0][-1]),dim=1),
+                               torch.cat((encoder_hidden[1][-1],quest_encoder_hidden[1][-1]),dim=1))
+            decoder_hidden0 = (self.downsize_linear(decoder_hidden0[0]), self.downsize_linear(decoder_hidden0[1]))
             # Not used currently
             quest_decoder_hidden0 = (quest_encoder_hidden[0][-1],
                                      quest_encoder_hidden[1][-1])
-        quest_encoding = quest_encoder_outputs[:,-1:].squeeze(1)
-        quest_encoding = self.quest_linear(quest_encoding)
+        
+        # batch_sz * 1 * n_dirs*hidden_sz 
+        quest_final_feats = quest_encoder_outputs[:,-1,:].unsqueeze(1)
+        #quest_encoding = self.quest_linear(quest_encoding)
+
+        # concat para hidden and ques hidden to pass as input to decoder
+
+        # bs * para_len * n_dirs*hidden_sz
+        quest_final_bc = torch.cat(encoder_outputs.size(1) * [quest_final_feats],dim=1)
+
+        # bs * para_len * 2*n_dirs*hidden_sz
+        concat_encoded_feats = torch.cat((encoder_outputs,quest_final_bc),dim=2)
+        concat_encoded_feats = self.downsize_linear(concat_encoded_feats)
+
         # Use the last output of question encoding as decoder initial input
-        (outputs, pointers), decoder_hidden = self.decoder.forward(embedded_inputs,
-                                                           quest_encoding,
+        (outputs, pointers), decoder_hidden = self.decoder.forward(concat_encoded_feats,
+                                                           quest_encoder_outputs[:,-1,:],
                                                            decoder_hidden0,
                                                            encoder_outputs)
 

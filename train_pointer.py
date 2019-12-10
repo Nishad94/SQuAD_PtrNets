@@ -20,7 +20,7 @@ from tqdm import tqdm
 from PointerNet import PointerNet
 from Data_Generator import TSPDataset
 
-from data_loader import train_loader
+from data_loader import train_loader, word2idx
 from eval import compute_f1
 
 parser = argparse.ArgumentParser(description="Pytorch implementation of Pointer-Net")
@@ -42,7 +42,7 @@ parser.add_argument('--embedding_size', type=int, default=128, help='Embedding s
 parser.add_argument('--hiddens', type=int, default=512, help='Number of hidden units')
 parser.add_argument('--nof_lstms', type=int, default=2, help='Number of LSTM layers')
 parser.add_argument('--dropout', type=float, default=0., help='Dropout value')
-parser.add_argument('--bidir', default=True, action='store_true', help='Bidirectional')
+parser.add_argument('--bidir', default=False, action='store_true', help='Bidirectional')
 
 params = parser.parse_args()
 
@@ -52,7 +52,7 @@ if params.gpu and torch.cuda.is_available():
 else:
     USE_CUDA = False
 
-model = PointerNet(params.embedding_size,
+model = PointerNet(len(word2idx), params.embedding_size,
                    params.hiddens,
                    params.nof_lstms,
                    params.dropout,
