@@ -21,7 +21,7 @@ from PointerNet import PointerNet
 from EncoderDecoderBaseline import BasicS2S
 from Data_Generator import TSPDataset
 
-from data_loader import train_loader, word2idx
+from data_loader import train_loader, word2idx, val_loader
 from eval import compute_f1
 
 
@@ -51,10 +51,7 @@ parser.add_argument('--bidir', default=True, action='store_true', help='Bidirect
 params = parser.parse_args()
 
 from pytorch_pretrained_bert import BertTokenizer, BertModel, BertForMaskedLM
-modelBERT = BertModel.from_pretrained('bert-base-uncased')
-modelBERT.eval()
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-
 
 if params.gpu and torch.cuda.is_available():
     USE_CUDA = True
@@ -96,31 +93,9 @@ model_optim = optim.Adam(filter(lambda p: p.requires_grad,
 
 losses = []
 
-def test_loop(model,loader):
-    total_f1 = 0.0
-    for i_batch, sample_batched in enumerate(iterator):
-        iterator.set_description('Test Batch %i/%i' % (epoch+1, params.nof_epoch))
-        test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
-        test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
-        target_batch = Variable(sample_batched["Answer"]).unsqueeze(2)
-        if USE_CUDA:
-            test_batch_para = test_batch_para.cuda()
-            test_batch_quest = test_batch_quest.cuda()
-        o, p = model(test_batch_para,test_batch_quest)
-        # Convert to list
-        p_ = p.tolist()[0]
-        p_.sort()
-        para = test_batch_para.tolist()
-        # Flatten 
-        para = [l for item in para[0] for l in item]
-        total_f1 += compute_f1(para[p_[0]:p_[1]+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1])
-        if i_batch % 100 == 0:
-            print(total_f1/(i_batch+1))
-    print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
-
 def test_loop_s2s(model,loader):
     total_f1 = 0.0
-    for i_batch, sample_batched in enumerate(iterator):
+    for i_batch, sample_batched in enumerate(loader):
         iterator.set_description('Test Batch %i/%i' % (epoch+1, params.nof_epoch))
         test_batch_para = Variable(sample_batched["Context_Tensor"]).unsqueeze(2)
         test_batch_quest = Variable(sample_batched["Question_Tensor"]).unsqueeze(2)
@@ -145,7 +120,7 @@ def test_loop_s2s(model,loader):
         total_f1 += compute_f1(para[start_pos:end_pos+1],para[target_batch.tolist()[0][0][0]:target_batch.tolist()[0][1][0]+1])
         if i_batch % 100 == 0:
             print(total_f1/(i_batch+1))
-    print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(iterator)}")
+    print(f"Final Average F1 score (across {len(iterator)} examples): {total_f1/len(loader)}")
 
 for epoch in range(params.nof_epoch):
     batch_loss = []
@@ -202,5 +177,5 @@ for epoch in range(params.nof_epoch):
 
     iterator.set_postfix(loss=np.average(batch_loss))
     torch.save(model.state_dict(), f"{time.time()}_{epoch}.pt")
-    test_loop_s2s(model,train_loader)
+    test_loop_s2s(model,val_loader)
     
