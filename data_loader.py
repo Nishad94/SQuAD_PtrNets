@@ -32,7 +32,7 @@ def vec_int(str_ip, count_missing):
 
 count_missing = 0
 valStartIndex = 20000
-valExamples = 200
+valExamples = 2000
 
 class dataset(Dataset):
     def __init__(self, data_dir):
@@ -40,7 +40,7 @@ class dataset(Dataset):
         self.df = data_dir
                 
     def __len__(self):
-        return 1000
+        return len(self.df)
 
     def __getitem__(self, i): # return single data item
         dict_ret = {}
