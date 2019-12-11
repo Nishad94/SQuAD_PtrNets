@@ -350,11 +350,13 @@ class PointerNet(nn.Module):
         # quest_embedded_inputs = self.embedding(quest_inputs).view(batch_size, quest_length, -1)
 
         embedded_inputs = getContextBertEmbeddings(inputs_text[0]).unsqueeze(1)
+        embedded_inputs = embedded_inputs.view(1,embedded_inputs.size(0),-1)
         quest_embedded_inputs = getContextBertEmbeddings(questions_text[0]).unsqueeze(1)
-
+        quest_embedded_inputs = quest_embedded_inputs.view(1,quest_embedded_inputs.size(0),-1)
+        
         # batch_sz * q_len * n_dirs*hidden_sz, n_dir*n_layers * batch_sz * hidden_sz 
         quest_encoder_outputs, quest_encoder_hidden = self.question_encoder(quest_embedded_inputs, None)
-
+       
         # batch_sz * para_len * n_dirs*hidden_sz, n_dir*n_layers * batch_sz * hidden_sz 
         encoder_outputs, encoder_hidden = self.para_encoder(embedded_inputs,
                                                        quest_encoder_hidden)
